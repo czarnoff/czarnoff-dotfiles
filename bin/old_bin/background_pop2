@@ -1,0 +1,15 @@
+#!/bin/bash
+BG=`ps ax | grep background_pop | grep -cv grep`
+GT='2'
+#echo $BG
+if  (test $BG -gt $GT)
+then
+exit
+fi
+
+while killall -USR1 xfdesktop;
+do
+   #sleep 5;
+   sleep 900;
+done
+

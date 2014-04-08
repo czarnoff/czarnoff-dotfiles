@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -z $1 ]
+then 
+   stop_syn.sh
+   start_boinc.sh
+fi
+source ~/.dbus/session-bus/*
+qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock

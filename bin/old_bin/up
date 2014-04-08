@@ -1,0 +1,6 @@
+#!/bin/bash
+stop_boinc.sh 32400
+if [ -z $1 ]
+then 
+  start_syn.sh
+fi

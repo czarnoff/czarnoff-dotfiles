@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo /usr/sbin/grub-reboot 4
+sudo /sbin/poweroff 
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+find . -iname "*.mp3" | while read file
+
+#ARTIST=`mp3info -p "%a" "$file"`
+#LABEL=`mp3info -p "%l" "$file"`
+#TRACK=`mp3info -p "%n" "$file"`
+#TITLE=`mp3info -p "%t" "$file"`
+#GENRE=`mp3info -p "%g" "$file"`
+#YEAR=`mp3info -p "%y" "$file"`
+
+                      do exec lame --decode "${file}" - | oggenc --resample 22050 -a "$ARTIST" -t "$TITLE" -l "$LABEL" -G "$GENRE" -d "$YEAR" -N "$TRACK" -o "${file/%mp3/ogg}" -
+                      done

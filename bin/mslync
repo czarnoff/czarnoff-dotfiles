@@ -1,0 +1,5 @@
+#!/bin/bash
+export NSS_SSL_CBC_RANDOM_IV=0
+pidgin &
+sleep 15
+pidgin

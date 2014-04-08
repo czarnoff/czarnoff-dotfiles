@@ -1,0 +1,1 @@
+/usr/bin/dbus-launch --auto-syntax --exit-with-session /usr/bin/fluxbox

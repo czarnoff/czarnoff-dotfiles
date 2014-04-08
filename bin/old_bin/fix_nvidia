@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo update-pciids
+sudo m-a a-i nvidia-kernel-source #--re-install
+sudo apt-get install nvidia-glx
+sudo depmod -a
+sudo modprobe -r nvidia
+sudo modprobe nvidia
+sudo dpkg-reconfigure xserver-xorg

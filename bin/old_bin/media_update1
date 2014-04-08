@@ -1,0 +1,1 @@
+rsync -vr --update --progress --delete /home/jeffery/rush/ /media/usb1/rush

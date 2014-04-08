@@ -1,0 +1,3 @@
+#!/bin/bash
+# get rid of leading whitespace | get rid of blank lines > newfile.
+sed 's/^[ \t]*//' "$1" | sed '/^$/d' - > "noblank$1"

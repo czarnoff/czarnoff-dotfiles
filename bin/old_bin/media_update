@@ -1,0 +1,2 @@
+cp /media/usb/rush/*.bmark /home/jeffery/rush
+rsync -vr --update --progress --delete /home/jeffery/rush/ /media/usb/rush

@@ -1,0 +1,19 @@
+#!/bin/bash
+BG=`pidof -x background_pop -o %PPID`
+
+for PIDS_FOUND in $BG
+do
+   echo killing $PIDS_FOUND
+   kill $PIDS_FOUND
+   sleep 1
+   kill -9 $PIDS_FOUND
+done
+
+cd ~/screen
+pwd
+while fbsetbg -t -r .;
+do
+   #sleep 5;
+   `sleep 900` >/dev/null 2>&1 ;
+done
+echo normal exit

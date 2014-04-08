@@ -1,0 +1,1 @@
+gqview "$(find | sed $(echo $RANDOM % "$(find  | wc -l)" + 1 | bc)q| tail -n1)" &

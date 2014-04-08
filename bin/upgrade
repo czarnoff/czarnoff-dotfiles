@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "update"
+sudo aptitude update
+echo "upgrade"
+sudo aptitude upgrade

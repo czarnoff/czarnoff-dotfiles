@@ -1,0 +1,4 @@
+echo 'source ~/.dbus/session-bus/*'
+echo 'XAUTHORITY=$HOME/.Xauthority ; export XAUTHORITY'
+echo 'env_keep="DISPLAY XAUTHORITY"'
+

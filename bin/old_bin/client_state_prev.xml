@@ -1,0 +1,61 @@
+<client_state>
+<host_info>
+    <timezone>-18000</timezone>
+    <domain_name>dhcp2-129</domain_name>
+    <ip_addr>127.0.0.1</ip_addr>
+    <host_cpid>cce6b12be4cfbb927ce02a5c6288b70b</host_cpid>
+    <p_ncpus>2</p_ncpus>
+    <p_vendor>GenuineIntel</p_vendor>
+    <p_model>Intel(R) Core(TM)2 CPU          6400  @ 2.13GHz [Family 6 Model 15 Stepping 2]</p_model>
+    <p_features>fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx lm constant_tsc arch_perfmon pebs bts rep_good pni monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr lahf_lm</p_features>
+    <p_fpops>0.000000</p_fpops>
+    <p_iops>0.000000</p_iops>
+    <p_membw>0.000000</p_membw>
+    <p_calculated>0.000000</p_calculated>
+    <m_nbytes>1051795456.000000</m_nbytes>
+    <m_cache>2097152.000000</m_cache>
+    <m_swap>3439321088.000000</m_swap>
+    <d_total>105689415680.000000</d_total>
+    <d_free>70818922496.000000</d_free>
+    <os_name>Linux</os_name>
+    <os_version>2.6.26-1-amd64</os_version>
+    <accelerators></accelerators>
+</host_info>
+<time_stats>
+    <on_frac>1.000000</on_frac>
+    <connected_frac>1.000000</connected_frac>
+    <active_frac>1.000000</active_frac>
+    <cpu_efficiency>1.000000</cpu_efficiency>
+    <last_update>0.000000</last_update>
+</time_stats>
+<net_stats>
+    <bwup>0.000000</bwup>
+    <avg_up>0.000000</avg_up>
+    <avg_time_up>0.000000</avg_time_up>
+    <bwdown>0.000000</bwdown>
+    <avg_down>0.000000</avg_down>
+    <avg_time_down>0.000000</avg_time_down>
+</net_stats>
+<active_task_set>
+</active_task_set>
+<platform_name>x86_64-pc-linux-gnu</platform_name>
+<core_client_major_version>6</core_client_major_version>
+<core_client_minor_version>2</core_client_minor_version>
+<core_client_release>14</core_client_release>
+<user_run_request>2</user_run_request>
+<user_network_request>2</user_network_request>
+<new_version_check_time>0.000000</new_version_check_time>
+<all_projects_list_check_time>0.000000</all_projects_list_check_time>
+<alt_platform>i686-pc-linux-gnu</alt_platform>
+<proxy_info>
+    <socks_version>5</socks_version>
+    <socks_server_name></socks_server_name>
+    <socks_server_port>80</socks_server_port>
+    <http_server_name></http_server_name>
+    <http_server_port>80</http_server_port>
+    <socks5_user_name></socks5_user_name>
+    <socks5_user_passwd></socks5_user_passwd>
+    <http_user_name></http_user_name>
+    <http_user_passwd></http_user_passwd>
+</proxy_info>
+</client_state>

@@ -1,0 +1,4 @@
+setxkbmap dvorak
+xrandr --output HDMI3 --rotate left
+xrandr --output VGA1 --rotate left
+xrandr --output HDMI3 --right-of VGA1

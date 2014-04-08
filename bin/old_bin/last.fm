@@ -1,0 +1,3 @@
+cd ~/last.fm
+esddsp ./player &
+cd -

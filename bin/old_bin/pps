@@ -1,0 +1,2 @@
+#!/bin/bash
+rdesktop -a 24 -g 1280x1024 -u jefjewil bl-iucf-ppicstr.ads.iu.edu
