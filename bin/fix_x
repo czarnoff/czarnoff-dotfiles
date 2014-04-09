@@ -1,0 +1,12 @@
+if [ -z "$3"  ]
+then
+  SCRENE_NU="0"
+else 
+  SCRENE_NU="$3"
+fi
+
+$DISPLAY="$1:$3"
+
+echo $DISPLAY
+
+xauth -add $DISPLAY . $2
