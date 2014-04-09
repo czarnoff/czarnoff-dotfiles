@@ -124,3 +124,9 @@ esac
  if [ -d "${HOME}/bin" ] ; then
    PATH="${HOME}/bin:${PATH}"
  fi
+alias cd_sw='cd `pwd | cut -d/ -f -5`'
+if [ test -e "/cygdrive" ]
+then
+   export JAVA_HOME='/cygdrive/c/Program Files (x86)/Java/jdk1.7.0_51'
+fi
+alias vps='ssh -X jeffery@jawmark.net'
