@@ -14,6 +14,7 @@ set shiftwidth =3
 set cindent
 set autoindent
 set expandtab
+set tabstop=4
 set showmatch
 set matchtime=7
 set tw=80
