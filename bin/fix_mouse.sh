@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INPUT=$(xinput | grep -i "synps" )
+INPUT=$(xinput | grep -i "synaptics" )
 echo $INPUT
 
 
