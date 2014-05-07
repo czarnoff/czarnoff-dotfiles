@@ -130,3 +130,5 @@ then
    export JAVA_HOME='/cygdrive/c/Program Files (x86)/Java/jdk1.7.0_51'
 fi
 alias vps='ssh -X jeffery@jawmark.net'
+export LESSOPEN="| /path/to/src-hilite-lesspipe.sh %s"
+export LESS=' -R '

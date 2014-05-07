@@ -1,0 +1,15 @@
+value="WARN"
+keyword="INFO"
+
+vardef logDate='([[:digit:]]{2}):([[:digit:]]{2}):([[:digit:]]{2}),([[:digit:]]{3})'
+keyword= $logDate
+keyword='([[:digit:]]{4})-([[:digit:]]{2})-([[:digit:]]{2})'
+
+#error="ERROR"
+#error start '\[ERROR]'
+
+error delim '\[ERROR]' $logDate multiline
+#  error start '\t+'
+#end
+
+
