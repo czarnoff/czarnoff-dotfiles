@@ -48,3 +48,5 @@ set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 
 set nofoldenable
+autocmd BufRead,BufNewFile *.log set syntax=log4j
+
