@@ -1,0 +1,7 @@
+#!/bin/bash
+setxkbmap dvorak
+fix_screen.sh
+fix_mouse.sh
+fn-f7-switch.sh
+nm-applet &
+. ssa
