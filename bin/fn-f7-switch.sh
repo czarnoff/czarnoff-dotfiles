@@ -5,6 +5,7 @@ LVDS="LVDS1"      # ciould be another one like: LVDS, LVDS-1, etc
 HDMI2="HDMI2"
 HDMI3="HDMI3"
 EXTRA_L="--left-of $HDMI2" # addtional info while dual display
+EXTRA_V="--left-of $LVDS" # addtional info while dual display
 EXTRA_R="--right-of $HDMI3" # addtional info while dual display
 
 CONNECTED_DISPLAYS=$(xrandr | grep " connected " | awk '{print $1}')
@@ -61,7 +62,7 @@ case $NO_DISP in
                xrandr --output $DISP --auto
             ;;
             *)
-               xrandr --output $DISP --auto $EXTRA_L
+               xrandr --output $DISP --auto $EXTRA_V --rotate left
             ;;
          esac
       done
