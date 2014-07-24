@@ -3,5 +3,7 @@ echo "update"
 sudo aptitude update
 echo "upgrade"
 sudo aptitude upgrade
+echo "clean"
+sudo aptitude autoclean
 echo "Trim"
 sudo fstrim /
