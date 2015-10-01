@@ -4,9 +4,11 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+   *i*) ;;
+*) return;;
 esac
+echo "Loading bashrc"
+echo "Setup history"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -27,63 +29,70 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+echo "setup less"
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+#if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+#   debian_chroot=$(cat /etc/debian_chroot)
+#fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
+#case "$TERM" in
+#   xterm-color) color_prompt=yes;;
+#esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
+#echo "setup color prompt"
+## uncomment for a colored prompt, if the terminal has the capability; turned
+## off by default to not distract the user: the focus in a terminal window
+## should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+#
+#if [ -n "$force_color_prompt" ]; then
+#   if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+#      # We have color support; assume it's compliant with Ecma-48
+#      # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+#      # a case would tend to support setf rather than setaf.)
+#      color_prompt=yes
+#   else
+#      color_prompt=
+#   fi
+#fi
+#
+#if [ "$color_prompt" = yes ]; then
+#   PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#else
+#   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+#fi
+#unset color_prompt force_color_prompt
+#
+#echo -e "$PS1"
+#echo "More term mucking"
+## If this is an xterm set the title to user@host:dir
+#case "$TERM" in
+#   xterm*|rxvt*)
+#      PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#      ;;
+#   *)
+#      ;;
+#esac
+#echo -e "$PS1"
+#
+echo "setup dircolors"
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+   alias ls='ls --color=auto'
+   #alias dir='dir --color=auto'
+   #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+   alias grep='grep --color=auto'
+   alias fgrep='fgrep --color=auto'
+   alias egrep='egrep --color=auto'
 fi
 
+echo "setup aliases"
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -98,38 +107,61 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
+echo "More aliases"
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+   . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+#echo "setup bash completion"
+## enable programmable completion features (you don't need to enable
+## this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+## sources /etc/bash.bashrc).
+#if ! shopt -oq posix; then
+#   if [ -f /usr/share/bash-completion/bash_completion ]; then
+#      . /usr/share/bash-completion/bash_completion
+#   elif [ -f /etc/bash_completion ]; then
+#      . /etc/bash_completion
+#   fi
+#fi
+
+echo "even more term mucking"
 # Change the window title of X terminals 
 case $TERM in
-	screen|xterm*|rxvt|Eterm|eterm)
-    PS1='\[\033]0;\u@\h: \w\007\]\[\033[0;33m\]\t\w\n\[\033[00;34m\]\u\[\033[00;31m\]@\h:\$ \[\033[00m\]'
-    export BROWSER="/usr/bin/firefox"
+   screen|xterm*|rxvt|Eterm|eterm)
+      PS1='\[\033]0;\u@\h: \w\007\]\[\033[0;33m\]\t\w\n\[\033[00;34m\]\u\[\033[00;31m\]@\h:\$ \[\033[00m\]'
+      export BROWSER="/usr/bin/firefox"
 
-		;;
+      ;;
 esac
-# Set PATH so it includes user's private bin if it exists
- if [ -d "${HOME}/bin" ] ; then
-   PATH="${HOME}/bin:${PATH}"
- fi
+echo -e "$PS1"
+
+echo "setup path"
 alias cd_sw='cd `pwd | cut -d/ -f -5`'
 if [ -e "/cygdrive" ]
 then
-   export JAVA_HOME='/cygdrive/c/Program Files (x86)/Java/jdk1.7.0_51'
+   #export JAVA_HOME='/cygdrive/c/Program Files/Java/jdk1.8.0_25'
+   export ANDROID_HOME='/cygdrive/c/Program Files (x86)/Android/android-sdk'
+   export PATH=$PATH:$ANDROID_HOME/platform-tools
+   export PATH=$JAVA_HOME/bin:$PATH
 else
    export LESSOPEN="| /path/to/src-hilite-lesspipe.sh %s"
    export LESS=' -R '
 fi
+
+# Set PATH so it includes user's private bin if it exists
+if [ -d "${HOME}/bin" ] ; then
+   PATH="${HOME}/bin:${PATH}"
+fi
+
 alias vps='ssh -X jeffery@jawmark.net'
+alias vps2='ssh -X jeffery@192.210.139.192'
+
+#echo "xsh"
+#source ~/.xsh
+
+echo "gvm"
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/home/JWillia/.gvm/bin/gvm-init.sh" ]] && source "/home/JWillia/.gvm/bin/gvm-init.sh"
+
+
+
