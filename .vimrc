@@ -17,12 +17,12 @@ set expandtab
 set tabstop=4
 set showmatch
 set matchtime=7
-set tw=80
+"set tw=80
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
-set colorcolumn=80
+"set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
 "set t_Co=256

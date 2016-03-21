@@ -1,5 +1,5 @@
 #!/bin/bash
-for x in .[a-Z]*
+for x in .[[:alpha:]]*
 do
    if [ -n $x -a "$x" != ".git" ]
    then
