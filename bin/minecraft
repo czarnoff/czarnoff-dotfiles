@@ -1,0 +1,2 @@
+cd ~/.minecraft
+java -jar ./Minecraft.jar
