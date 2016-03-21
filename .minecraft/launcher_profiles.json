@@ -1,0 +1,25 @@
+{
+  "profiles": {
+    "czarnoff": {
+      "name": "czarnoff",
+      "gameDir": "/home/jeffery/jwillia/AppData/Roaming/.minecraft",
+      "javaArgs": "-Dsun.java3d.opengl\u003dtrue:-Xmx6G -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:-UseAdaptiveSizePolicy -Xmn512M"
+    }
+  },
+  "selectedProfile": "czarnoff",
+  "clientToken": "dd23e5e8-3d34-4b5a-9b26-cad7ed281033",
+  "authenticationDatabase": {
+    "4bcbc1c5cc3242aca298a24538dc1c3a": {
+      "displayName": "czarnoff",
+      "accessToken": "1f8c84b13d3d47a6aa382961495f52be",
+      "userid": "9e0eaa4680cd116580079afae98965ad",
+      "uuid": "4bcbc1c5-cc32-42ac-a298-a24538dc1c3a",
+      "username": "czarnoff@gmail.com"
+    }
+  },
+  "selectedUser": "4bcbc1c5cc3242aca298a24538dc1c3a",
+  "launcherVersion": {
+    "name": "1.6.61",
+    "format": 18
+  }
+}
