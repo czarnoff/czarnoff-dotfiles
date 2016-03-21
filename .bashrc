@@ -116,7 +116,7 @@ fi
 case $TERM in
 	screen|xterm*|rxvt|Eterm|eterm)
     PS1='\[\033]0;\u@\h: \w\007\]\[\033[0;33m\]\t\w\n\[\033[00;34m\]\u\[\033[00;31m\]@\h:\$ \[\033[00m\]'
-    export BROWSER="/usr/bin/firefox"
+    export BROWSER="/usr/bin/google-chrome"
 
 		;;
 esac
@@ -133,3 +133,6 @@ else
    export LESS=' -R '
 fi
 alias vps='ssh -X jeffery@jawmark.net'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "/home/jeffery/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jeffery/.sdkman/bin/sdkman-init.sh"
