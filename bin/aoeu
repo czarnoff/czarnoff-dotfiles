@@ -8,5 +8,5 @@ fix_mouse.sh
 fn-f7-switch.sh
 nm-applet &
 skype &
-mslync &
+#mslync &
 . ssa
