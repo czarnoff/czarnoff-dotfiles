@@ -1,8 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/JWillia/.fvwm'
 let g:netrw_dirhist_2='/home/JWillia'
 let g:netrw_dirhist_3='/media/76C8AE3CC8ADFB0F/Users/jwillia/AppData/Roaming/Microsoft/Signatures/German_files'
 let g:netrw_dirhist_4='/media/76C8AE3CC8ADFB0F/Users/jwillia/AppData/Roaming/Microsoft/Signatures/German Formal_files'
 let g:netrw_dirhist_5='/home/jeffery/bin'
 let g:netrw_dirhist_6='/media/jeffery/SYSTEM_DRV/System Volume Information'
+let g:netrw_dirhist_7='/home/jeffery/.bfgminer'
+let g:netrw_dirhist_8='/etc/profile.d'
+let g:netrw_dirhist_9='/home/jeffery/.config/awesome'
