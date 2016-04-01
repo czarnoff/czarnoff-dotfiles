@@ -153,6 +153,10 @@ if [ -d "${HOME}/bin" ] ; then
    PATH="${HOME}/bin:${PATH}"
 fi
 
+if [ -x /usr/bin/ipython3 ];then
+   alias ipython=/usr/bin/ipython3
+fi
+
 alias vps='ssh -X jeffery@jawmark.net'
 alias vps2='ssh -X jeffery@192.210.139.192'
 
