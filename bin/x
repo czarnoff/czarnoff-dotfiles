@@ -4,5 +4,9 @@
 #gnome-screensaver-command -l
 
 #KDE
-source ~/.dbus/session-bus/*
-qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
+#source ~/.dbus/session-bus/*
+#qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
+
+#xfce
+xscreensaver &
+xscreensaver-command -lock

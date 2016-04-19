@@ -6,7 +6,7 @@
 fix_screen.sh
 fix_mouse.sh
 fn-f7-switch.sh
-nm-applet &
-skype &
+#nm-applet &
+#skype &
 #mslync &
 . ssa
