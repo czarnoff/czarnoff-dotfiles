@@ -1,0 +1,3 @@
+echo "------------------------------"
+cpufreq-info -mf
+sensors
