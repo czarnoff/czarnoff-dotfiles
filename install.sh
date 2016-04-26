@@ -1,4 +1,7 @@
 #!/bin/bash
+git submodule init
+git submodule update
+
 for x in .[[:alpha:]]*
 do
    if [ -n $x -a "$x" != ".git" ]

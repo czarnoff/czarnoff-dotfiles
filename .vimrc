@@ -51,3 +51,6 @@ set nofoldenable
 autocmd BufRead,BufNewFile *.log set syntax=log4j
 " turn spellchecker on for txt files
 autocmd BufRead,BufNewFile *txt setlocal spell
+autocmd BufRead,BufNewFile *text setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.markdown setlocal spell
