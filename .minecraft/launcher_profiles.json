@@ -2,8 +2,8 @@
   "profiles": {
     "czarnoff": {
       "name": "czarnoff",
-      "gameDir": "/media/76C8AE3CC8ADFB0F/jeffery/.minecraft",
-      "javaArgs": "-Dsun.java3d.opengl\u003dtrue:-Xmx6G -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:-UseAdaptiveSizePolicy -Xmn512M"
+      "gameDir": "/home/jeffery/.minecraft/saves",
+      "javaArgs": "-Dsun.java3d.opengl\u003dtrue:-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:-UseAdaptiveSizePolicy -Xmn512M"
     }
   },
   "selectedProfile": "czarnoff",
@@ -11,7 +11,7 @@
   "authenticationDatabase": {
     "4bcbc1c5cc3242aca298a24538dc1c3a": {
       "displayName": "czarnoff",
-      "accessToken": "6f1a9f098db74b319c75c727800f905b",
+      "accessToken": "7c02ad88550542e89ec1d56c373694eb",
       "userid": "9e0eaa4680cd116580079afae98965ad",
       "uuid": "4bcbc1c5-cc32-42ac-a298-a24538dc1c3a",
       "username": "czarnoff@gmail.com"
