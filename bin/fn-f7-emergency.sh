@@ -1,7 +1,7 @@
 #!/bin/bash
  
 #For identifying our monitors use xrandr tool and view output
-LVDS="LVDS1"      # ciould be another one like: LVDS, LVDS-1, etc
+LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
 EXTRA_R="--right-of $LVDS" # addtional info while dual display
 
 CONNECTED_DISPLAYS=$(xrandr | grep " connected " | awk '{print $1}')

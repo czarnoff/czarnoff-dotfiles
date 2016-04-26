@@ -8,4 +8,4 @@ sudo aptitude autoclean
 echo "Trim"
 sudo fstrim /
 
-sudo fstrim /media/76C8AE3CC8ADFB0F
+#sudo fstrim /media/76C8AE3CC8ADFB0F

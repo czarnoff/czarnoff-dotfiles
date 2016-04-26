@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #For identifying our monitors use xrandr tool and view output
-LVDS="LVDS1"      # ciould be another one like: LVDS, LVDS-1, etc
+LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
 HDMI2="HDMI2"
 HDMI3="HDMI3"
 VGA="VGA1"
