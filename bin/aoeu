@@ -3,10 +3,10 @@
 # All the stuff that should autostart on the first startup of awesome
 ##############
 
-fix_screen.sh
+fix_screen.sh >> /dev/null
 fix_mouse.sh
 fn-f7-switch.sh
 #nm-applet &
-#skype &
+skype &
 #mslync &
 . ssa
