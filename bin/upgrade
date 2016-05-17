@@ -6,6 +6,6 @@ sudo aptitude upgrade
 echo "clean"
 sudo aptitude autoclean
 echo "Trim"
-sudo fstrim /
+sudo fstrim -av
 
 #sudo fstrim /media/76C8AE3CC8ADFB0F
