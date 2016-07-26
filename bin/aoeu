@@ -11,3 +11,5 @@ fn-f7-switch.sh
 #nm-applet &
 echo ssa
 . ssa
+echo discord
+discord &
