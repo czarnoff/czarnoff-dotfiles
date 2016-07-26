@@ -67,7 +67,7 @@ case $NO_DISP in
                xrandr --output $DISP --auto $EXTRA_V
             ;;
             *)
-               xrandr --output $DISP --auto $EXTRA_V --rotate left
+               xrandr --output $DISP --auto $EXTRA_VR --rotate left
             ;;
          esac
       done
