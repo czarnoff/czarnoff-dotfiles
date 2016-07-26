@@ -4,3 +4,5 @@ skype > /dev/null 2>&1 &
 #mslync &
 echo Nifty Doorways!
 vm &
+echo Synergy
+quicksynergy &
