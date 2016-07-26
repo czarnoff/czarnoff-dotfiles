@@ -1,6 +1,6 @@
 #!/bin/bash
 echo skype
-skype > /dev/null 2>&1 &
+skypeforlinux > /dev/null 2>&1 &
 #mslync &
 echo Nifty Doorways!
 vm &
