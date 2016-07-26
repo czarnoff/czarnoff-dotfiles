@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#TODO: allow for options to change the setup from the below listed default.
+
 #For identifying our monitors use xrandr tool and view output
 LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
 HDMI2="HDMI2"
