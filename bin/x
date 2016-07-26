@@ -8,5 +8,6 @@
 #qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock
 
 #xfce
-xscreensaver &
-xscreensaver-command -lock
+#xscreensaver &
+#xscreensaver-command -lock
+dm-tool lock
