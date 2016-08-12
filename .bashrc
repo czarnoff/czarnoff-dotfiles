@@ -123,12 +123,21 @@ fi
 #      . /etc/bash_completion
 #   fi
 #fi
+echo "Pick Term colors"
+#Do everything in this step in base 16 (24= 6*6)
+USER_HOSTNAME=`echo "ibase=16; ( $(hostname | md5sum | sed 's/\(.*\)/\U\1/g' ) 0 ) % 24" | bc`
+
 
 echo "even more term mucking"
-# Change the window title of X terminals 
+# Change the window title of X terminals
 case $TERM in
 	screen|xterm*|rxvt|Eterm|eterm)
-    PS1='\[\033]0;\u@\h: \w\007\]\[\033[0;33m\]\t\w\n\[\033[00;34m\]\u\[\033[00;31m\]@\h:\$ \[\033[00m\]'
+    #PS1='\[\033]0;\u@\h:\!: \w\007\]\[\033[0;33m\]\t\w\n\[\033[00;34m\]\u\[\033[00;31m\]@\h:\$ \[\033[00m\]'
+    U_H1=`echo "$USER_HOSTNAME % 6 + 1"|bc`
+    U_H2=`echo "$USER_HOSTNAME / 6 + 1"|bc`
+    echo $U_H1:$U_H2
+    PS1="\[\033[0;33m\]\t:[\[\033[0;37m\]\!\[\033[0;33m\]]:\w\n\[\033[00;3${U_H1}m\]\u\[\033[00;3${U_H2}m\]@\h:\$ \[\033[00m\]"
+    unset U_H1 U_H2 USER_HOSTNAME
     export BROWSER="/usr/bin/google-chrome"
 
       ;;
