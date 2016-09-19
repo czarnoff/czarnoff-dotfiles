@@ -13,3 +13,5 @@ done
 
 rm -rf ~/bin
 ln -s "`pwd`/bin" ~/
+rm -rf ~/.oh-my-zsh
+ln -s "`pwd`/oh-my-zsh" ~/.oh-my-zsh

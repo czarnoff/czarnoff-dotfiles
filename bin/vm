@@ -1,1 +1,3 @@
-vmplayer ~/Sw_Engi_Tools/Sw_Engi_Tools.vmx &
+#!/bin/bash
+#vmplayer ~/Sw_Engi_Tools/Sw_Engi_Tools.vmx &
+vboxmanage startvm vm &

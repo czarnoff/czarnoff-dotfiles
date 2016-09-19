@@ -32,7 +32,7 @@ autocmd! bufwritepost .vimrc source %
 set pastetoggle==<F2>
 set clipboard=unnamed
 
-set mouse=a
+"set mouse=a
 
 vnoremap < <gv " better indent
 vnoremap > >gv " better indent
