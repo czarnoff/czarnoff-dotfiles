@@ -13,15 +13,15 @@ echo ""
 exit
 fi
 
-if [[ -z $1 ]]; then
+if [[ -z "$1" ]]; then
 echo "Usage: ./autosizer.sh <Image File>"
 exit
 fi
 
-if [[ ! -e $1 || ! $(file $1) =~ "x86" ]]; then
-echo "Error : Not an image file, or file doesn't exist"
-exit
-fi
+#if [[ ! -e $1 || ! $(file $1) =~ "x86" ]]; then
+#echo "Error : Not an image file, or file doesn't exist"
+#exit
+#fi
 
 partinfo=`parted -m $1 unit B print`
 partnumber=`echo "$partinfo" | grep ext4 | awk -F: ' { print $1 } '`
