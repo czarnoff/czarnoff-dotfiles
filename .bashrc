@@ -153,8 +153,11 @@ then
    export PATH=$PATH:$ANDROID_HOME/platform-tools
    export PATH=$JAVA_HOME/bin:$PATH
 else
-   export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-   export LESS=' -R '
+   if [ -e /usr/share/source-highlight/src-hilite-lesspipe.sh ]
+   then
+      export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+      export LESS=' -R '
+   fi
 fi
 
 # Set PATH so it includes user's private bin if it exists

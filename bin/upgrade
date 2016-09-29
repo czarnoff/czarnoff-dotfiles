@@ -5,9 +5,9 @@ echo "upgrade"
 sudo aptitude upgrade
 echo "clean"
 sudo aptitude autoclean
-echo "\ndeep-clean"
+echo -e "\ndeep-clean"
 sudo apt-get autoremove
-echo "Trim"
+echo -e "\nTrim"
 sudo fstrim -av
 
 #sudo fstrim /media/76C8AE3CC8ADFB0F
