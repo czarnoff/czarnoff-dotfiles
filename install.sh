@@ -3,6 +3,8 @@ git submodule init
 git submodule update
 #git submodule foreach git pull origin master
 
+curl -s "https://get.sdkman.io" | bash
+
 for x in .[[:alpha:]]*
 do
    if [ -n $x -a "$x" != ".git" ]
