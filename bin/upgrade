@@ -2,7 +2,7 @@
 echo "update"
 sudo aptitude update
 echo "upgrade"
-sudo aptitude upgrade
+sudo aptitude upgrade -y
 echo "clean"
 sudo aptitude autoclean
 echo -e "\ndeep-clean"
