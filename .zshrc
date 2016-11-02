@@ -53,6 +53,32 @@ ZSH_THEME="random"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git colorize python gradle screen sudo svn ubuntu mvn)
 
+echo "setup less"
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+if [ -e /usr/share/source-highlight/src-hilite-lesspipe.sh ]
+then
+   export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+   export LESS=' -R '
+fi
+
+echo 'path'
+
+#set PATH so it includes user's private bin if it exists
+if [ -d "${HOME}/bin" ] ; then
+      PATH="${HOME}/bin:${PATH}"
+fi
+
+if [ -d "/usr/local/spark/bin" ] ; then
+      PATH="/usr/local/spark/bin:${PATH}"
+fi
+
+if [ -x /usr/bin/ipython3 ];then
+    alias ipython=/usr/bin/ipython3
+fi
+
+
 # User configuration
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
@@ -85,3 +111,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="python3"
+alias vps='ssh -X jeffery@jawmark.net'
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
