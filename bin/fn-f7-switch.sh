@@ -1,5 +1,7 @@
 #!/bin/bash
 
+$HOME/bin/fn-f7-emergency.sh
+
 #TODO: allow for options to change the setup from the below listed default.
 
 #For identifying our monitors use xrandr tool and view output
