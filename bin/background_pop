@@ -9,8 +9,10 @@ do
    kill -9 $PIDS_FOUND
 done
 
-while feh --bg-fill -z /home/jeffery/Pictures/* /media/BFD/Pictures/backgrounds/*
+while feh --bg-max -z /home/jeffery/Pictures/Backgrounds/* #/media/BFD/Pictures/backgrounds/*
+#while wal -i /home/jeffery/Pictures/Backgrounds
 do
+   #wal-steam -w
    #sleep 5;
    `sleep 900` >/dev/null 2>&1 ;
 done
