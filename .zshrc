@@ -5,7 +5,8 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="random"
+#ZSH_THEME="random"
+ZSH_THEME="jonathan"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="robbyrussell"
 
@@ -112,4 +113,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="python3"
 alias vps='ssh -X jeffery@jawmark.net'
+alias xx='sudo pm-hibernate'
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
