@@ -13,3 +13,5 @@ echo ssa
 . ssa
 echo discord
 discord &
+echo bluetooth
+e7
