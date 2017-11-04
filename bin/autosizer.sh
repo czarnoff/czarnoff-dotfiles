@@ -24,8 +24,13 @@ fi
 #fi
 
 partinfo=`parted -m $1 unit B print`
-partnumber=`echo "$partinfo" | grep ext4 | awk -F: ' { print $1 } '`
-partstart=`echo "$partinfo" | grep ext4 | awk -F: ' { print substr($2,0,length($2)-1) } '`
+echo $partinfo
+partnumber=`echo "$partinfo" | grep ext4 | tail -n 1| awk -F: ' { print $1 } '`
+echo $partnumber
+partstart=`echo "$partinfo" | grep ext4 | tail -n 1| awk -F: ' { print substr($2,0,length($2)-1) } '`
+echo $partstart
+echo "Resizing $partnumber"
+sleep 15
 loopback=`losetup -f --show -o $partstart $1`
 e2fsck -f $loopback
 minsize=`resize2fs -P $loopback | awk -F': ' ' { print $2 } '`
