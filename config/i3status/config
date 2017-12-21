@@ -9,6 +9,7 @@
 general {
         colors = true
         interval = 5
+        color_good = "#00ffff"
 }
 
 #order += "ipv6"
@@ -16,9 +17,12 @@ order += "disk /"
 order += "disk /home"
 order += "wireless _first_"
 order += "ethernet _first_"
+order += "volume master"
+order += "volume e7"
 order += "battery 0"
 order += "battery 1"
 order += "load"
+order += "cpu_temperature 0"
 order += "tztime local"
 order += "tztime berlin"
 
@@ -34,40 +38,43 @@ ethernet _first_ {
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+        format = "0 %status %percentage %remaining"
         status_chr = "⚡"
         status_bat = "🔋"
         status_unk = "?"
         status_full = "☻"
         path = "/sys/class/power_supply/BAT%d/uevent"
-        last_full_capacity = true
+#last_full_capacity = true
         low_threshold = 10
-
 }
+
 battery 1 {
-        format = "%status %percentage %remaining"
+        format = "1 %status %percentage %remaining"
         status_chr = "⚡"
         status_bat = "🔋"
         status_unk = "?"
         status_full = "☻"
         path = "/sys/class/power_supply/BAT%d/uevent"
-        last_full_capacity = true
+#last_full_capacity = true
         low_threshold = 10
-
 }
 
 tztime local {
         format = "%H:%M"
+        #color_good="#ff0000"
 }
 
 tztime berlin {
         format = "EU:%time"
         format_time = "%H:%M"
         timezone = "Europe/Berlin"
+        color_good="#ff8800"
 }
 
 load {
         format = "%1min"
+        max_threshold = "1.5"
+
 }
 
 disk "/" {
@@ -76,3 +83,20 @@ disk "/" {
 disk "/home" {
         format = "%avail"
 }
+
+volume master {
+   format = "♪: %volume"
+   format_muted = "♪: muted (%volume)"
+   device = "pulse:alsa_output.pci-0000_00_1b.0.analog-stereo"
+}
+
+volume e7 {
+   format = "ᛡᛒ♪: %volume"
+   format_muted = "ᛡᛒ♪: muted (%volume)"
+   device = "pulse:bluez_sink.FC_58_FA_91_9F_BA"
+}
+cpu_temperature 0 {
+   format = "°C: %degrees"
+   path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+}
+
