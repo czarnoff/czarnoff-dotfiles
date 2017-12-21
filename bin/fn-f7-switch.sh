@@ -81,3 +81,4 @@ case $NO_DISP in
    ;;
 esac
 
+sleep 1
