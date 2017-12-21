@@ -15,3 +15,5 @@ echo discord
 discord &
 echo bluetooth
 e7
+#echo player
+#google-play-music-desktop-player > /dev/null &
