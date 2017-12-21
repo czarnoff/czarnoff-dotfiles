@@ -1,8 +1,10 @@
 #!/bin/bash
-echo skype
-skypeforlinux > /dev/null 2>&1 &
+#echo skype
+#skypeforlinux > /dev/null 2>&1 &
 #mslync &
-echo Nifty Doorways!
-vm &
+#echo Nifty Doorways!
+#vm &
 echo Synergy
-quicksynergy &
+quicksynergy > /dev/null 2>&1 &
+echo Pomodone
+PomoDoneApp > /dev/null 2>&1 &
