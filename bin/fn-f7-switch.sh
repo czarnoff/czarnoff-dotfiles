@@ -6,8 +6,8 @@ $HOME/bin/fn-f7-emergency.sh
 
 #For identifying our monitors use xrandr tool and view output
 LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
-HDMI2="HDMI2"
-HDMI3="HDMI3"
+HDMI2="HDMI1"
+HDMI3="HDMI2"
 VGA="VGA1"
 EXTRA_L="--left-of $HDMI2" # addtional info while dual display
 EXTRA_V="--left-of $LVDS" # addtional info while dual display
