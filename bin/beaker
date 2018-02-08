@@ -1,0 +1,1 @@
+sudo docker run -v $HOME:/home/beaker/host -p 127.0.0.1:8801:8801 -t beakernotebook/beaker su -m beaker -c 'export PATH=$PATH:/usr/sbin && /home/beaker/src/core/beaker.command --connect-host 127.0.0.1 --listen-interface \*'
