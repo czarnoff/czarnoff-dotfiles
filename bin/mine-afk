@@ -1,0 +1,13 @@
+#!/bin/bash
+
+winID=`xwininfo | grep  Minecraft | cut -d" " -f4`
+
+echo $winID
+
+if [ -z $winID ]
+then
+    echo "Not Minecraft: $winID"
+    exit 1
+else
+    xdotool mousedown --window $winID 3
+fi
