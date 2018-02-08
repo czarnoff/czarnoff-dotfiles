@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BLUEZNUM=`pactl list cards | grep -C 1 bluez_card | grep Card | sed -e 's/.*[^0-9]\([0-9]\+\)[^0-9]*$/\1/'`
-BLUEZCARD=`pactl list sinks | grep bluez_sink | grep Name | cut -d':' -f2-`
+BLUEZNUM=`pactl list short cards | grep bluez_card | cut -f1 `
+BLUEZCARD=`pactl list short sinks | grep bluez_sink | cut -f2 `
 
 echo $BLUEZCARD
 echo $BLUEZNUM
