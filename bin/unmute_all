@@ -1,0 +1,9 @@
+#!/bin/bash
+SINKZ=`pactl list short sinks | cut -f1`
+
+for x in $SINKZ
+do
+    echo "pactl set-sink-mute $x 0"
+    pactl set-sink-mute $x 0
+done
+
