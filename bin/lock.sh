@@ -1,4 +1,5 @@
 #!/bin/bash
+mute_all
 sleep 1
 scrot /tmp/screen.png
 #convert /tmp/screen.png -paint 3 -modulate 80 /tmp/screen.png
