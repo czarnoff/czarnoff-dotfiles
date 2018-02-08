@@ -1,15 +1,15 @@
 " local syntax file - set colors on a per-machine basis:
 " vim: tw=0 ts=4 sw=4
 " Vim color file
-" Maintainer:	Ron Aaron <ron@ronware.org>
-" Last Change:	2003 May 02
+" Maintainer:	Jeffery Williams
+" Last Change:	2018-01-24
 
 set background=dark
 hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let g:colors_name = "elflord"
+let g:colors_name = "blurp"
 hi Normal		guifg=white			guibg=black
 hi Comment	term=bold		ctermfg=yellow		guifg=yellow
 hi Constant	term=underline	ctermfg=blue		guifg=blue
@@ -24,6 +24,9 @@ hi Operator				ctermfg=Red			guifg=Red
 hi Ignore				ctermfg=black		guifg=bg
 hi Error	term=reverse ctermbg=Red ctermfg=White guibg=Red guifg=White
 hi Todo	term=standout ctermbg=Yellow ctermfg=Black guifg=Blue guibg=Yellow
+hi clear SpellBad
+hi SpellBad cterm=underline
+hi ColorColumn ctermbg=DarkGray
 
 " Common groups that link to default highlighting.
 " You can specify other highlighting easily.
