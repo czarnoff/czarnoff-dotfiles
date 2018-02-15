@@ -1,3 +1,5 @@
+set nocompatible
+filetype plugin on
 if &t_Co > 1
     syntax enable
 endif
@@ -53,6 +55,11 @@ let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+
+" vimwiki with markdown support
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
 
 set nofoldenable
 autocmd BufRead,BufNewFile *.log set syntax=log4j
@@ -110,5 +117,8 @@ autocmd filetype markdown map <leader><F5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<en
     autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><Enter><++><Esc>kkA
     autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><Enter><++><Esc>kkA
     autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><Enter><++><Esc>kkA
+    autocmd Filetype markdown,rmd inoremap ;4 ####<Space><Enter><Enter><++><Esc>kkA
+    autocmd Filetype markdown,rmd inoremap ;5 #####<Space><Enter><Enter><++><Esc>kkA
+    autocmd Filetype markdown,rmd inoremap ;6 ######<Space><Enter><Enter><++><Esc>kkA
     autocmd Filetype markdown,rmd inoremap ;l --------<Enter>
     autocmd Filetype markdown,rmd inoremap ;c ```<Enter><++><Enter>```<Esc>kkA
