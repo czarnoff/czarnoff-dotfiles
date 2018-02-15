@@ -17,4 +17,9 @@ e7
 #google-play-music-desktop-player > /dev/null &
 echo ssa
 . ssa
+#swap caps and esc
+echo esc move
+setxkbmap -option "caps:swapescape"
+#Screen
+echo screen
 screen -xR -S dropdown
