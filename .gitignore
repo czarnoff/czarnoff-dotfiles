@@ -25,3 +25,8 @@ config/ranger/history.t
 .minecraft/usercache.json
 .minecraft/usernamecache.json
 .minecraft/versions/
+bin/NaNoWriMo
+bin/node
+bin/spark-shell.lln
+config/i3/i3_guide.md.pdf
+

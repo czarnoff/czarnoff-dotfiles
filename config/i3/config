@@ -219,7 +219,7 @@ hide_edge_borders smart
 assign [class="discord"] 2
 assign [class="Google Play Music Desktop Player"] 9
 for_window [title="Google Hangouts - czarnoff@gmail.com"] floating disable
-assign [class="Google-chrome" instance="knipol"] 4
+assign [class="Google-chrome" instance="crx_knipolnnllmklapflnccelgolnpehhpl"] 4
 
 # accelerate the things
 exec --no-startup-id compton --config .config/compton/config -b
@@ -233,6 +233,9 @@ exec --no-startup-id fluxgui
 exec --no-startup-id blueman-applet
 # Keyboard and mouse management
 exec --no-startup-id solaar
+# Keyboard capslock indicator
+exec --no-startup-id indicator-keylock
+
 # Make notifications less annoying
 exec --no-startup-id twmnd
 #Unclutter makes the mouse invisible after a brief period
@@ -243,7 +246,7 @@ exec --no-startup-id unclutter
 # I bind this to XF86Tools
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set 625 400
-for_window [class="Blueman-manager"] move scratchpad 
+for_window [class="Blueman-manager"] move scratchpad
 for_window [class="Blueman-manager"] border pixel 5
 
 # #---Dropdown/Scratchpad Windows---# #
@@ -252,7 +255,8 @@ for_window [class="Blueman-manager"] border pixel 5
 for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] sticky enable
 for_window [instance="dropdown"] resize set 625 400
-for_window [instance="dropdown"] move scratchpad 
+for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 5
+
 exec --no-startup-id $term -n dropdown -e aoeu
 exec --no-startup-id blueman-manager

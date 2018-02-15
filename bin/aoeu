@@ -8,4 +8,9 @@ echo start synergy
 syn_c.sh
 echo ssa
 . ssa
+#swap caps and esc
+echo esc move
+setxkbmap -option "caps:swapescape"
+#Screen
+echo screen
 screen -xR -S dropdown
