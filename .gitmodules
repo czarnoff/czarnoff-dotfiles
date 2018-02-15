@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/i3-vim-syntax"]
 	path = .vim/bundle/i3-vim-syntax
 	url = git@github.com:PotatoesMaster/i3-vim-syntax.git
+[submodule ".vim/bundle/vimwkiki"]
+	path = .vim/bundle/vimwkiki
+	url = https://github.com/vimwiki/vimwiki.git
