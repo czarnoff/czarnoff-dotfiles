@@ -4,17 +4,8 @@
 ##############
 echo screen
 fix_screen.sh >> /dev/null
-echo mouse
-fix_mouse.sh
-echo xrandr
-fn-f7-switch.sh
-#nm-applet &
-echo discord
-discord &
-echo bluetooth
-e7
-#echo player
-#google-play-music-desktop-player > /dev/null &
+echo start synergy
+syn_c.sh
 echo ssa
 . ssa
 screen -xR -S dropdown
