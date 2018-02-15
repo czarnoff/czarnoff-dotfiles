@@ -1,0 +1,17 @@
+#basic configuration
+backend = "glx";
+vsync = "opengl-mswc";
+unredir-if-possible-delay = 1000;
+
+#glx-copy-from-front = true;
+#glx-swap-method = 2;
+xrender-sync = true;
+xrender-sync-fence = true;
+
+glx-use-copysubbuffermesa = true;
+
+# transparancy settings for i3
+opacity-rule = [
+     "95:class_g = 'URxvt' && !_NET_WM_STATE@:32a",
+     "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
+];
