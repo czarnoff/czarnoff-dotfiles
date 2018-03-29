@@ -44,6 +44,7 @@ if &t_Co > 1
     "colorscheme blurp
 endif
 
+
 call matchadd('colorcolumn', '\%81v', 100)
 
 set pastetoggle==<F2>
@@ -175,3 +176,8 @@ set statusline+=%y          " file type
 set statusline+=%=          " separator from left to right justified
 set statusline+=\ %{WordCount()}\ words,
 set statusline+=\ %l/%l\ lines,\ %p " percentage through the file
+
+" highlight the status bar when in insert mode
+hi statusline cterm=NONE ctermbg=NONE ctermfg=black
+au insertenter * hi statusline cterm=reverse ctermfg=Black ctermbg=blue
+au insertleave * hi statusline cterm=NONE ctermbg=NONE ctermfg=black
