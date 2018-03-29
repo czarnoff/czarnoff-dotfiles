@@ -1,8 +1,7 @@
 set nocompatible
 filetype plugin on
-if &t_Co > 1
-    syntax enable
-endif
+filetype indent on
+call pathogen#infect()
 filetype indent on
 if &term == "Eterm"
    set t_kb=
@@ -11,6 +10,7 @@ endif
 "au BufNewFile,BufRead *.c set nu
 "au BufNewFile,BufRead *.cpp set nu
 "au BufNewFile,BufRead *.py set nu
+
 set number relativenumber
 set encoding=utf-8
 
@@ -29,14 +29,22 @@ set showmatch
 set matchtime=7
 "set tw=80
 
+autocmd! bufwritepost .vimrc source %
+
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
-set colorcolumn=100
+if &t_Co > 1
+    syntax enable
+    set background=dark
+    let g:solarized_termtrans = 1
+    let g:solarized_visibility="high"
+    colorscheme solarized
+    "set t_co=16
+    "colorscheme blurp
+endif
 
-"set t_Co=256
-color blurp
-autocmd! bufwritepost .vimrc source %
+call matchadd('colorcolumn', '\%81v', 100)
 
 set pastetoggle==<F2>
 set clipboard=unnamed
@@ -50,75 +58,120 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-call pathogen#infect()
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+set complete+=kspell
 
 " vimwiki with markdown support
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 
-set nofoldenable
+set foldenable
+set cursorline
+set cursorcolumn
+set laststatus=2
+
+
 autocmd BufRead,BufNewFile *.log set syntax=log4j
 " turn spellchecker on for txt files
 autocmd BufRead,BufNewFile *txt setlocal spell
 autocmd BufRead,BufNewFile *text setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd BufRead,BufNewFile *.rmd setlocal spell
 autocmd BufRead,BufNewFile *.markdown setlocal spell
-autocmd filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
-autocmd filetype markdown map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
-autocmd filetype rmd map <leader><F5> :!mupdf<space>'<c-r>%<bs><bs><bs>pdf'&<enter>
-autocmd filetype markdown map <leader><F5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<enter>
 
 
-"Navigating with guides
-    inoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
-    vnoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
-    map <Space><Tab> <Esc>/<Enter>"_c4l
+autocmd filetype rmd map <f5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>r<space>--vanilla<enter>
+autocmd filetype markdown map <f5> :!pandoc<space>'<c-r>%'<space>-o<space>'<c-r>%<bs><bs>pdf'<enter>
+"autocmd filetype markdown map <f5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>r<space>--vanilla<enter>
+autocmd filetype rmd map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs><bs>pdf'&<enter>
+autocmd filetype markdown map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<enter>
+
+"navigating with guides
+    inoremap <space><tab> <esc>/<++><enter>"_c4l
+    vnoremap <space><tab> <esc>/<++><enter>"_c4l
+    map <space><tab> <esc>/<++><enter>"_c4l
     inoremap ;qjk <++>
 
-"""PHP
-    autocmd FileType php,html inoremap ;b <b></b><Space><++><Esc>FbT>i
-    autocmd FileType php,html inoremap ;i <em></em><Space><++><Esc>FeT>i
-    autocmd FileType php,html inoremap ;h1 <h1></h1><Enter><Enter><++><Esc>2kf<i
-    autocmd FileType php,html inoremap ;h2 <h2></h2><Enter><Enter><++><Esc>2kf<i
-    autocmd FileType php,html inoremap ;h3 <h3></h3><Enter><Enter><++><Esc>2kf<i
-    autocmd FileType php,html inoremap ;p <p></p><Enter><Enter><++><Esc>02kf>a
-    autocmd FileType php,html inoremap ;a <a<Space>href=""><++></a><Space><++><Esc>14hi
-    autocmd FileType php,html inoremap ;e <a<Space>target="_blank"<Space>href=""><++></a><Space><++><Esc>14hi
-    autocmd FileType php,html inoremap ;ul <ul><Enter><li></li><Enter></ul><Enter><Enter><++><Esc>03kf<i
-    autocmd FileType php,html inoremap ;li <Esc>o<li></li><Esc>F>a
-    autocmd FileType php,html inoremap ;ol <ol><Enter><li></li><Enter></ol><Enter><Enter><++><Esc>03kf<i
-    autocmd FileType php,html inoremap ;im <table<Space>class="image"><Enter><caption align="bottom"></caption><Enter><tr><td><a<space>href="pix/<++>"><img<Space>src="pix/<++>"<Space>width="<++>"></a></td></tr><Enter></table><Enter><Enter><++><Esc>4kf>a
-    autocmd FileType php,html inoremap ;td <td></td><++><Esc>Fdcit
-    autocmd FileType php,html inoremap ;tr <tr></tr><Enter><++><Esc>kf<i
-    autocmd FileType php,html inoremap ;th <th></th><++><Esc>Fhcit
-    autocmd FileType php,html inoremap ;tab <table><Enter></table><Esc>O
-    autocmd FileType php,html inoremap ;gr <font color="green"></font><Esc>F>a
-    autocmd FileType php,html inoremap ;rd <font color="red"></font><Esc>F>a
-    autocmd FileType php,html inoremap ;yl <font color="yellow"></font><Esc>F>a
-    autocmd FileType php,html inoremap ;dt <dt></dt><Enter><dd><++></dd><Enter><++><esc>2kcit
-    autocmd FileType php,html inoremap ;dl <dl><Enter><Enter></dl><enter><enter><++><esc>3kcc
-    "autocmd FileType php,html inoremap -- &ndash;
-    "autocmd FileType php,html inoremap --- &mdash;
+"""php
+    autocmd filetype php,html inoremap ;b <b></b><space><++><esc>fbt>i
+    autocmd filetype php,html inoremap ;i <em></em><space><++><esc>fet>i
+    autocmd filetype php,html inoremap ;h1 <h1></h1><enter><enter><++><esc>2kf<i
+    autocmd filetype php,html inoremap ;h2 <h2></h2><enter><enter><++><esc>2kf<i
+    autocmd filetype php,html inoremap ;h3 <h3></h3><enter><enter><++><esc>2kf<i
+    autocmd filetype php,html inoremap ;p <p></p><enter><enter><++><esc>02kf>a
+    autocmd filetype php,html inoremap ;a <a<space>href=""><++></a><space><++><esc>14hi
+    autocmd filetype php,html inoremap ;e <a<space>target="_blank"<space>href=""><++></a><space><++><esc>14hi
+    autocmd filetype php,html inoremap ;ul <ul><enter><li></li><enter></ul><enter><enter><++><esc>03kf<i
+    autocmd filetype php,html inoremap ;li <esc>o<li></li><esc>f>a
+    autocmd filetype php,html inoremap ;ol <ol><enter><li></li><enter></ol><enter><enter><++><esc>03kf<i
+    autocmd filetype php,html inoremap ;im <table<space>class="image"><enter><caption align="bottom"></caption><enter><tr><td><a<space>href="pix/<++>"><img<space>src="pix/<++>"<space>width="<++>"></a></td></tr><enter></table><enter><enter><++><esc>4kf>a
+    autocmd filetype php,html inoremap ;td <td></td><++><esc>fdcit
+    autocmd filetype php,html inoremap ;tr <tr></tr><enter><++><esc>kf<i
+    autocmd filetype php,html inoremap ;th <th></th><++><esc>fhcit
+    autocmd filetype php,html inoremap ;tab <table><enter></table><esc>o
+    autocmd filetype php,html inoremap ;gr <font color="green"></font><esc>f>a
+    autocmd filetype php,html inoremap ;rd <font color="red"></font><esc>f>a
+    autocmd filetype php,html inoremap ;yl <font color="yellow"></font><esc>f>a
+    autocmd filetype php,html inoremap ;dt <dt></dt><enter><dd><++></dd><enter><++><esc>2kcit
+    autocmd filetype php,html inoremap ;dl <dl><enter><enter></dl><enter><enter><++><esc>3kcc
+    "autocmd filetype php,html inoremap -- &ndash;
+    "autocmd filetype php,html inoremap --- &mdash;
 
-"MARKDOWN
-    autocmd Filetype markdown,rmd inoremap ;n ---<Enter><Enter>
-    autocmd Filetype markdown,rmd inoremap ;b ****<++><Esc>F*hi
-    autocmd Filetype markdown,rmd inoremap ;s ~~~~<++><Esc>F~hi
-    autocmd Filetype markdown,rmd inoremap ;e **<++><Esc>F*i
-    autocmd Filetype markdown,rmd inoremap ;h ====<Space><++><Esc>F=hi
-    autocmd Filetype markdown,rmd inoremap ;i ![](<++>)<++><Esc>F[a
-    autocmd Filetype markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
-    autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><Enter><++><Esc>kkA
-    autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><Enter><++><Esc>kkA
-    autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><Enter><++><Esc>kkA
-    autocmd Filetype markdown,rmd inoremap ;4 ####<Space><Enter><Enter><++><Esc>kkA
-    autocmd Filetype markdown,rmd inoremap ;5 #####<Space><Enter><Enter><++><Esc>kkA
-    autocmd Filetype markdown,rmd inoremap ;6 ######<Space><Enter><Enter><++><Esc>kkA
-    autocmd Filetype markdown,rmd inoremap ;l --------<Enter>
+"markdown
+    autocmd filetype markdown,rmd inoremap ;n ---<enter><enter>
+    autocmd filetype markdown,rmd inoremap ;b ****<++><esc>f*hi
+    autocmd filetype markdown,rmd inoremap ;s ~~~~<++><esc>f~hi
+    autocmd filetype markdown,rmd inoremap ;e **<++><esc>f*i
+    autocmd filetype markdown,rmd inoremap ;h ====<space><++><esc>f=hi
+    autocmd filetype markdown,rmd inoremap ;i ![](<++>)<++><esc>f[a
+    autocmd filetype markdown,rmd inoremap ;a [](<++>)<++><esc>f[a
+    autocmd filetype markdown,rmd inoremap ;1 #<space><enter><enter><++><esc>kka
+    autocmd filetype markdown,rmd inoremap ;2 ##<space><enter><enter><++><esc>kka
+    autocmd filetype markdown,rmd inoremap ;3 ###<space><enter><enter><++><esc>kka
+    autocmd filetype markdown,rmd inoremap ;4 ####<space><enter><enter><++><esc>kka
+    autocmd filetype markdown,rmd inoremap ;5 #####<space><enter><enter><++><esc>kka
+    autocmd filetype markdown,rmd inoremap ;6 ######<space><enter><enter><++><esc>kka
+    autocmd filetype markdown,rmd inoremap ;l --------<enter>
     autocmd Filetype markdown,rmd inoremap ;c ```<Enter><++><Enter>```<Esc>kkA
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" here begins my automated wordcount addition.
+" this combines several ideas from:
+" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:word_count="<unknown>"
+function! WordCount()
+    return g:word_count
+endfunction
+
+function! UpdateWordCount()
+    let lnum = 1
+    let n = 0
+    while lnum <= line('$')
+        let n = n + len(split(getline(lnum)))
+        let lnum = lnum + 1
+    endwhile
+    let g:word_count = n
+endfunction
+
+" update the count when cursor is idle in command or insert mode.
+" update when idle for 1000 msec (default is 4000 msec).
+set updatetime=1000
+
+augroup wordcounter
+    au! cursorhold,cursorholdi * call UpdateWordCount()
+augroup end
+
+
+" set statusline, shown here a piece at a time
+"set statusline=%1*          " switch to user1 color highlight
+set statusline=%<%f            " file name, cut if needed at start
+set statusline+=%m          " modified flag
+set statusline+=%y          " file type
+set statusline+=%=          " separator from left to right justified
+set statusline+=\ %{WordCount()}\ words,
+set statusline+=\ %l/%l\ lines,\ %p " percentage through the file
