@@ -67,14 +67,12 @@ fi
 
 echo 'path'
 
-#set PATH so it includes user's private bin if it exists
-if [ -d "${HOME}/bin" ] ; then
-      PATH="${HOME}/bin:${PATH}"
-fi
+##set PATH so it includes user's private bin if it exists
+#if [ -d "${HOME}/bin" ] ; then
+#      PATH="${HOME}/bin:${PATH}"
+#fi
 
-if [ -d "/usr/local/spark/bin" ] ; then
-      PATH="/usr/local/spark/bin:${PATH}"
-fi
+source ${HOME}/.profile
 
 if [ -x /usr/bin/ipython3 ];then
     alias ipython=/usr/bin/ipython3
@@ -87,6 +85,8 @@ fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -113,6 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="python3"
+alias pylint="pylint3"
 alias vps='ssh -X jeffery@jawmark.net'
 alias xx='sudo pm-hibernate'
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
