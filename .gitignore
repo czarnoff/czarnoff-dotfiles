@@ -30,3 +30,8 @@ bin/node
 bin/spark-shell.lln
 config/i3/i3_guide.md.pdf
 
+config/mpd/database
+config/mpd/log
+config/mpd/pid
+config/mpd/state
+config/mpd/sticker.sql
