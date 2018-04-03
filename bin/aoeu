@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 ##############
 # All the stuff that should autostart on the first startup of awesome
 ##############
@@ -7,19 +7,19 @@ fix_screen.sh >> /dev/null
 echo mouse
 fix_mouse.sh
 echo xrandr
-fn-f7-switch.sh
+fn-f7-work.sh
 #nm-applet &
-echo discord
-discord &
-echo bluetooth
-e7
+#echo bluetooth
+#e7
 #echo player
 #google-play-music-desktop-player > /dev/null &
 echo ssa
 . ssa
 #swap caps and esc
 echo esc move
-setxkbmap -option "caps:swapescape"
+swapesc
+echo discord
+discord &
 #Screen
 echo screen
-screen -xR -S dropdown
+tmux new-session -A -s dropdown
