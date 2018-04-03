@@ -2,13 +2,15 @@
 
 $HOME/bin/fn-f7-emergency.sh
 
+sleep 2
+
 #TODO: allow for options to change the setup from the below listed default.
 
 #For identifying our monitors use xrandr tool and view output
 LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
 HDMI2="HDMI1"
 HDMI3="HDMI2"
-VGA="VGA1"
+VGA="DP2-3"
 EXTRA_L="--left-of $HDMI2" # addtional info while dual display
 EXTRA_V="--left-of $LVDS" # addtional info while dual display
 EXTRA_VR="--right-of $LVDS" # addtional info while dual display
@@ -17,6 +19,30 @@ EXTRA_R="--right-of $HDMI3" # addtional info while dual display
 CONNECTED_DISPLAYS=$(xrandr | grep " connected " | awk '{print $1}')
 DISCONNECTED_DISPLAYS=$(xrandr | grep " disconnected " | awk '{print $1}')
 NO_DISP=$(echo $CONNECTED_DISPLAYS | wc -w)
+
+
+
+case "$1" in
+    "r" | "R")
+        TURN="--rotate right"
+    ;;
+    "n" | "N")
+        TURN="--rotate normal"
+    ;;
+    "h" | "H" | "help" | "--help")
+        echo "$0 <r|n|l|i>"
+        echo "    r rotate right"
+        echo "    n rotate normal"
+        echo "    l rotate left"
+        echo "    i rotate inverted"
+    ;;
+    "i" | "i")
+        TURN="--rotate inverted"
+        ;;
+    "l" | "L" | *)
+        TURN="--rotate left"
+        ;;
+esac
 
 #echo "Connected $CONNECTED_DISPLAYS these are $NO_DISP Displays."
 
@@ -31,20 +57,22 @@ case $NO_DISP in
       for DISP in $CONNECTED_DISPLAYS; do
          case $DISP in
             $LVDS)
-               xrandr --output $DISP --off
+               xrandr --output $DISP --auto
                #echo "xrandr --output $DISP --off"
             ;;
             $HDMI3)
-               xrandr --output $DISP --auto --rotate left $EXTRA_L
+               xrandr --output $DISP --auto $EXTRA_L
                #echo "xrandr --output $DISP --auto"
             ;;
             $HDMI2)
-               xrandr --output $DISP --auto
+               xrandr --output $DISP --auto $EXTRA_V
                #echo "xrandr --output $DISP --auto $EXTRA_R"
             ;;
+            "$VGA")
+               xrandr --output $DISP --auto $EXTRA_V #$TURN
+            ;;
             *)
-               xrandr --output $DISP --auto
-               #echo "xrandr --output $DISP --auto $EXTRA_R"
+               xrandr --output $DISP --auto $EXTRA_VR  $TURN
             ;;
          esac
       done
@@ -68,10 +96,10 @@ case $NO_DISP in
                xrandr --output $DISP --auto
             ;;
             "$VGA")
-               xrandr --output $DISP --auto $EXTRA_V
+               xrandr --output $DISP --auto $EXTRA_VR $TURN
             ;;
             *)
-               xrandr --output $DISP --auto $EXTRA_VR --rotate left
+               xrandr --output $DISP --auto $EXTRA_VR  $TURN
             ;;
          esac
       done
