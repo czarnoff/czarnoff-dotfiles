@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/vimwkiki"]
 	path = .vim/bundle/vimwkiki
 	url = https://github.com/vimwiki/vimwiki.git
+[submodule "solarized"]
+	path = solarized
+	url = git@github.com:altercation/solarized.git
