@@ -93,7 +93,7 @@ volume master {
 volume e7 {
    format = "ᛡᛒ♪: %volume"
    format_muted = "ᛡᛒ♪: muted (%volume)"
-   device = "pulse:bluez_sink.FC_58_FA_91_9F_BA"
+   device = "pulse:bluez_sink.FC_58_FA_91_9F_BA.a2dp_sink"
 }
 cpu_temperature 0 {
    format = "°C: %degrees"

@@ -14,7 +14,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $term i3-sensible-terminal
+set $term st
+#i3-sensible-terminal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -192,13 +193,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 2 toggle # m
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 bindsym XF86Display exec --no-startup-id fn-f7-switch.sh
-bindsym XF86Explorer exec --no-startup-id blueSync.sh
+bindsym XF86Explorer exec --no-startup-id /home/jeffery/bin/blueSync.sh
 bindsym XF86Tools [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 bindsym XF86Search [class="Blueman-manager"] scratchpad show; [class="Blueman-manager"] move position center
 #pacmd list-sinks | grep \* | sed -r 's/.* ([0-9])/\1/g'
 
 bindsym $mod+l workspace lock ; exec $term -e top ; exec $term -e ranger; exec --no-startup-id ~/bin/lock.sh
-bindsym $mod+Shift+l exec --no-startup-id sudo pm-suspend
+bindsym $mod+Shift+l exec --no-startup-id sudo /usr/sbin/pm-suspend
 
 bar {
         status_command i3status
@@ -228,7 +229,7 @@ exec --no-startup-id nm-applet
 # Store the things
 exec --no-startup-id dropbox start
 # Night time blue filter
-exec --no-startup-id fluxgui
+exec --no-startup-id redshift
 # Bluetooth audio
 exec --no-startup-id blueman-applet
 # Keyboard and mouse management
@@ -241,9 +242,9 @@ exec --no-startup-id twmnd
 #Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
 
-# #---Dropdown/Scratchpad Windows---# #
+# #---Bluetooth control---# #
 # First I have a screen window used for background scripts.
-# I bind this to XF86Tools
+# I bind this to XF86Search
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set 625 400
 for_window [class="Blueman-manager"] move scratchpad
@@ -258,5 +259,16 @@ for_window [instance="dropdown"] resize set 625 400
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 5
 
-exec --no-startup-id $term -n dropdown -e aoeu
+# #---Pulse audio control---# #
+# First I have a screen window used for background scripts.
+# I bind this to XF86Search
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] resize set 625 400
+for_window [class="Pavucontrol"] move scratchpad
+for_window [class="Pavucontrol"] border pixel 5
+
+
+exec --no-startup-id st -n dropdown -e /home/jeffery/bin/aoeu
 exec --no-startup-id blueman-manager
+exec --no-startup-id pavucontrol
+exec --no-startup-id mpd
