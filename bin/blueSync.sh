@@ -9,3 +9,4 @@ pactl set-card-profile $BLUEZNUM headset_head_unit
 sleep 0.5
 pactl set-card-profile $BLUEZNUM a2dp_sink
 pactl set-default-sink $BLUEZCARD
+pactl set-sink-mute $BLUEZCARD 0
