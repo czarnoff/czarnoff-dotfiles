@@ -127,8 +127,8 @@ autocmd filetype markdown map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<en
     autocmd filetype markdown,rmd inoremap ;s ~~~~<++><esc>f~hi
     autocmd filetype markdown,rmd inoremap ;e **<++><esc>f*i
     autocmd filetype markdown,rmd inoremap ;h ====<space><++><esc>f=hi
-    autocmd filetype markdown,rmd inoremap ;i ![](<++>)<++><esc>f[a
-    autocmd filetype markdown,rmd inoremap ;a [](<++>)<++><esc>f[a
+    autocmd filetype markdown,rmd inoremap ;i ![](<++>)<++><esc>F[a
+    autocmd filetype markdown,rmd inoremap ;a [](<++>)<++><esc>F[a
     autocmd filetype markdown,rmd inoremap ;1 #<space><enter><enter><++><esc>kka
     autocmd filetype markdown,rmd inoremap ;2 ##<space><enter><enter><++><esc>kka
     autocmd filetype markdown,rmd inoremap ;3 ###<space><enter><enter><++><esc>kka
