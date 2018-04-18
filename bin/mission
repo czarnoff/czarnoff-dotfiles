@@ -1,0 +1,13 @@
+#!/bin/bash
+
+clear 
+figlet -c -t "ooooooo" | lolcat
+while sleep 5
+do
+    figlet -c -t -f 3d "Protect
+    Enhance
+    and
+    Save Lives" | lolcat
+    figlet -c -t "ooooooo" | lolcat
+done
+
