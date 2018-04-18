@@ -98,7 +98,7 @@ case $NO_DISP in
                xrandr --output $DISP --auto $EXTRA_VR $TURN
             ;;
             *)
-               xrandr --output $DISP --auto $EXTRA_VR  $TURN
+               xrandr --output $DISP --auto $EXTRA_V  $TURN
             ;;
          esac
       done
