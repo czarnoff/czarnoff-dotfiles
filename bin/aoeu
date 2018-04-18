@@ -7,7 +7,7 @@ fix_screen.sh >> /dev/null
 echo mouse
 fix_mouse.sh
 echo xrandr
-fn-f7-work.sh
+fn-f7-emergency.sh
 #nm-applet &
 #echo bluetooth
 #e7
@@ -16,8 +16,8 @@ fn-f7-work.sh
 echo ssa
 . ssa
 #swap caps and esc
-echo esc move
-swapesc
+#echo esc move
+#swapesc
 echo discord
 discord &
 #Screen
