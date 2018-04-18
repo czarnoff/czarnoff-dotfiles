@@ -243,7 +243,9 @@ exec --no-startup-id indicator-keylock
 exec --no-startup-id twmnd
 #Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
-exec --no-startup-id synergy-tray
+
+# When synergy2 stops sucking, restart the synergy-tray
+#exec --no-startup-id synergy-tray
 
 # #---Bluetooth control---# #
 # First I have a screen window used for background scripts.
