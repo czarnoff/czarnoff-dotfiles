@@ -20,6 +20,10 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+## set PATH so it includes user's private games if it exists
+#if [ -d "$HOME/games" ] ; then
+#    PATH="$HOME/games:$PATH"
+#fi
 
 # set pip PATH so it includes user's pip bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then

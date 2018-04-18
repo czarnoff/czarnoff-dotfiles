@@ -165,10 +165,10 @@ else
    fi
 fi
 
-# Set PATH so it includes user's private bin if it exists
-if [ -d "${HOME}/bin" ] ; then
-   PATH="${HOME}/bin:${PATH}"
-fi
+## Set PATH so it includes user's private game if it exists
+#if [ -d "${HOME}/games" ] ; then
+#   PATH="${HOME}/games:${PATH}"
+#fi
 
 if [ -x /usr/bin/ipython3 ];then
    alias ipython=/usr/bin/ipython3
