@@ -6,3 +6,4 @@ then
 else
    echo "cannot find synergy"
 fi
+#sudo service synergy stop

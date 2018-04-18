@@ -9,3 +9,5 @@ else
     synergys -c ~/.quicksynergy/synergy.conf
     #synergys
 fi
+
+#sudo service synergy start
