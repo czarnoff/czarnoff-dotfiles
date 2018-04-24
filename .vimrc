@@ -181,3 +181,5 @@ set statusline+=\ %l/%l\ lines,\ %p " percentage through the file
 hi statusline cterm=NONE ctermbg=NONE ctermfg=black
 au insertenter * hi statusline cterm=reverse ctermfg=Black ctermbg=blue
 au insertleave * hi statusline cterm=NONE ctermbg=NONE ctermfg=black
+
+let @t='ggi---title:  <++> <++>author: Jeffery Williams---\tableofcontentsPLANNING: <++>'
