@@ -2,7 +2,6 @@
  
 #For identifying our monitors use xrandr tool and view output
 LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
-EXTRA_R="--right-of $LVDS" # addtional info while dual display
 xrandr >  ~/.local/xrandr
 CONNECTED_DISPLAYS=$(xrandr | grep " connected " | awk '{print $1}')
 DISCONNECTED_DISPLAYS=$(xrandr | grep " disconnected " | awk '{print $1}')
@@ -64,3 +63,4 @@ done
 #	;;
 #esac
 
+notify-send -t 1000 "fn-f7" "Emergency setup complete."

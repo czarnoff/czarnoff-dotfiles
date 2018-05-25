@@ -108,4 +108,6 @@ case $NO_DISP in
    ;;
 esac
 
+notify-send "fn-f7" "Work setup complete."
+
 sleep 1
