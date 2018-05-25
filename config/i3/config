@@ -113,7 +113,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -156,33 +156,56 @@ bindsym $mod+Shift+p restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+period exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# MPC audio mode
+mode "audio" {
+    # bindings to clone ncmpcpp config.
+    bindsym Shift+period exec --no-startup-id mpc next
+    bindsym Shift+comma exec --no-startup-id mpc prev
+    bindsym period exec --no-startup-id mpc next
+    bindsym comma exec --no-startup-id mpc prev
+    bindsym p exec --no-startup-id mpc toggle
+    bindsym space exec --no-startup-id mpc toggle
+    bindsym l exec --no-startup-id mpc volume +5
+    bindsym h exec --no-startup-id mpc volume -5
+    bindsym k exec --no-startup-id mpc volume +5
+    bindsym j exec --no-startup-id mpc volume -5
+    
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+a mode "default"
+}
+
+bindsym $mod+a mode "audio"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym t resize grow height 10 px or 10 ppt
-        bindsym n resize shrink height 10 px or 10 ppt
-        bindsym s resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym t resize grow height 10 px or 10 ppt
+    bindsym n resize shrink height 10 px or 10 ppt
+    bindsym s resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+r mode "default"
 }
 
 bindsym $mod+Shift+r mode "resize"
 
-bindsym $mod+p exec mpc toggle
+bindsym $mod+p exec --no-startup-id mpc toggle
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -196,12 +219,14 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 bindsym XF86Display exec --no-startup-id fn-f7-switch.sh
 bindsym XF86Explorer exec --no-startup-id /home/jeffery/bin/blueSync.sh
+bindsym XF86HomePage exec --no-startup-id /home/jeffery/bin/blueSync.sh
 bindsym XF86Tools [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 bindsym XF86Search [class="Blueman-manager"] scratchpad show; [class="Blueman-manager"] move position center
 #pacmd list-sinks | grep \* | sed -r 's/.* ([0-9])/\1/g'
 
-bindsym $mod+l workspace lock ; exec $term -e top ; exec $term -e ranger; exec --no-startup-id ~/bin/lock.sh
-bindsym $mod+Shift+l exec --no-startup-id sudo /usr/sbin/pm-suspend
+#bindsym $mod+l workspace lock ; exec $term -e htop ; exec xterm -e /usr/local/bin/asciiquarium; exec --no-startup-id ~/bin/lock.sh
+bindsym $mod+l workspace lock ; exec $term -e htop ; exec $term -e ranger; exec --no-startup-id ~/bin/lock.sh
+bindsym $mod+Shift+l workspace lock; exec --no-startup-id ~/bin/lock.sh -L
 
 bar {
         status_command i3status
@@ -211,7 +236,16 @@ bar {
         colors {
            statusline #ff00ff
         }
+        font pango:monospace 7
 }
+
+#bar {
+#    status_command i3blocks
+#    position top
+#    tray_output primary
+#    font pango:monospace 7
+#}
+
 #exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 
