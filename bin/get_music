@@ -1,0 +1,32 @@
+#!/bin/bash
+
+name="$@"
+
+urlname=`echo "$@" | sed 's/\ /%20/g'`
+filename=`echo "$@" | sed 's/\ /_/g'`
+
+echo "Getting id for $name"
+
+id=`curl -s "http://localhost:9999/search_id?type=artist&artist=$urlname"`
+
+echo $id
+
+if [ -z "$id" ] 
+then
+    echo "No id found for $name"
+    exit 1
+fi
+
+echo "Getting discography"
+
+curl -s "http://localhost:9999/get_discography_artist?id=$id" > ~/Music/"$filename"_albums.m3u
+
+echo "Getting the megalist"
+
+cat /dev/null > ~/Music/playlists/"$filename"_all.m3u
+
+for x in `grep -i http ~/Music/"$filename"_albums.m3u`
+do
+    curl $x >> ~/Music/playlists/"$filename"_all.m3u
+done
+
