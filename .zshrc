@@ -115,6 +115,6 @@ export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomo
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="python3"
 alias pylint="pylint3"
-alias vps='ssh -X jeffery@jawmark.net'
 alias xx='sudo pm-hibernate'
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+fortune | lolcat

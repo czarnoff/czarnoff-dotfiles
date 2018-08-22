@@ -1,0 +1,11 @@
+#!/bin/bash
+
+case "$1" in
+   "mine")
+       echo minecraft
+       ssh -XL 25565:jawmark.net:25565 jawmark.net
+       ;;
+   *)
+       ssh -X jawmark.net
+       ;;
+esac
