@@ -225,7 +225,7 @@ bindsym XF86Search [class="Blueman-manager"] scratchpad show; [class="Blueman-ma
 #pacmd list-sinks | grep \* | sed -r 's/.* ([0-9])/\1/g'
 
 #bindsym $mod+l workspace lock ; exec $term -e htop ; exec xterm -e /usr/local/bin/asciiquarium; exec --no-startup-id ~/bin/lock.sh
-bindsym $mod+l workspace lock ; exec $term -e htop ; exec $term -e ranger; exec --no-startup-id ~/bin/lock.sh
+bindsym $mod+l workspace lock ; exec $term -e htop ; exec $term -e ranger; exec $term -e bin/mission 1; exec --no-startup-id ~/bin/lock.sh
 bindsym $mod+Shift+l workspace lock; exec --no-startup-id ~/bin/lock.sh -L
 
 bar {
