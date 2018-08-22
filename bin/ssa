@@ -1,12 +1,12 @@
 #!/bin/bash
  
 SSH_ENV="$HOME/.ssh/environment"
-if [ -z "$BLACKMAGIC" ]
-then
-   echo -n "BlackMagic:"
-   read -s BLACKMAGIC
-   echo ""
-fi
+#if [ -z "$BLACKMAGIC" ]
+#then
+#   echo -n "BlackMagic:"
+#   read -s BLACKMAGIC
+#   echo ""
+#fi
 
 function start_agent {
    echo "Initialising new SSH agent..."
