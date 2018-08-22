@@ -7,11 +7,12 @@ sleep 1
 
 if [ -n "$1" ]
 then
-    fn-f7-emergency
+    fn-f7-emergency.sh
+
     notify-send -t 500 "Lock" "Suspending"
     stop_syn.sh
     sleep 2
-    sudo /usr/sbin/pm-suspend
+    systemctl suspend
 fi
 
 scrot /tmp/screen.png
