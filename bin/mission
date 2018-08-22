@@ -1,13 +1,17 @@
 #!/bin/bash
 
-clear 
+stuff=""
+
+clear
 figlet -c -t "ooooooo" | lolcat
-while sleep 5
+while [ -z $stuff ]
 do
     figlet -c -t -f 3d "Protect
     Enhance
     and
     Save Lives" | lolcat
     figlet -c -t "ooooooo" | lolcat
+    sleep 30
+    stuff="$1"
 done
 
