@@ -1,13 +1,15 @@
 #!/bin/bash
 
-winID=`xwininfo | grep  Minecraft | cut -d" " -f4`
+winID=`sleep 1 ; xwininfo | grep  Minecraft | cut -d" " -f4`
 
-echo $winID
+notify-send -t 500 "mine-afk" "$winID"
 
 if [ -z $winID ]
 then
-    echo "Not Minecraft: $winID"
+    notify-send -t 500 "mine-afk" "Not Minecraft: $winID"
     exit 1
 else
+    sleep 5
+    notify-send -t 500 "mine-afk" "Working :)"
     xdotool mousedown --window $winID 3
 fi
