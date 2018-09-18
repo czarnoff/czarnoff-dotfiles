@@ -1,0 +1,7 @@
+#!/bin/bash
+
+fn-f7-switch.sh
+
+nmcli radio wifi on
+
+stop_syn.sh

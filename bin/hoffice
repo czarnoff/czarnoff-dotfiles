@@ -1,0 +1,8 @@
+#!/bin/bash
+
+fn-f7-switch.sh n L
+
+nmcli radio wifi off
+
+start_syn.sh c
+background_pop > /dev/null 2>&1 &
