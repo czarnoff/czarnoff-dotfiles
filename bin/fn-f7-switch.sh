@@ -20,29 +20,38 @@ CONNECTED_DISPLAYS=$(xrandr | grep " connected " | awk '{print $1}')
 DISCONNECTED_DISPLAYS=$(xrandr | grep " disconnected " | awk '{print $1}')
 NO_DISP=$(echo $CONNECTED_DISPLAYS | wc -w)
 
+TURN="--rotate left"
+POS=$EXTRA_V
 
-
-case "$1" in
-    "r" | "R")
-        TURN="--rotate right"
-    ;;
-    "n" | "N")
-        TURN="--rotate normal"
-    ;;
-    "h" | "H" | "help" | "--help")
-        echo "$0 <r|n|l|i>"
-        echo "    r rotate right"
-        echo "    n rotate normal"
-        echo "    l rotate left"
-        echo "    i rotate inverted"
-    ;;
-    "i" | "i")
-        TURN="--rotate inverted"
-        ;;
-    "l" | "L" | *)
-        TURN="--rotate left"
-        ;;
-esac
+for arg in $1 $2; do
+    case "$arg" in
+        "-r" | "r" )
+            TURN="--rotate right"
+            ;;
+        "-n" | "n" | "N")
+            TURN="--rotate normal"
+            ;;
+        "-i" | "i" | "i")
+            TURN="--rotate inverted"
+            ;;
+        "-i" | "l")
+            TURN="--rotate left"
+            ;;
+        "L")
+            POS=$EXTRA_V
+            ;;
+        "R")
+            POS=$EXTRA_VR
+            ;;
+        "-h" | "h" | "H" | "help" | "--help" | *)
+            echo "$0 <r|n|l|i>"
+            echo "    r rotate right"
+            echo "    n rotate normal"
+            echo "    l rotate left"
+            echo "    i rotate inverted"
+            ;;
+    esac
+done
 
 #echo "Connected $CONNECTED_DISPLAYS these are $NO_DISP Displays."
 
@@ -65,21 +74,21 @@ case $NO_DISP in
                #echo "xrandr --output $DISP --auto"
             ;;
             $HDMI2)
-               xrandr --output $DISP --auto $EXTRA_V
+               xrandr --output $DISP --auto $POS
                #echo "xrandr --output $DISP --auto $EXTRA_R"
             ;;
             "$VGA")
-               xrandr --output $DISP --auto $EXTRA_V #$TURN
+               xrandr --output $DISP --auto $POS #$TURN
             ;;
             *)
-               xrandr --output $DISP --auto $EXTRA_VR  $TURN
+               xrandr --output $DISP --auto $POS  $TURN
             ;;
          esac
       done
       for DISP in $CONNECTED_DISPLAYS; do
          case $DISP in
             $HDMI2)
-               xrandr --output $DISP --pos 900x540
+               #xrandr --output $DISP --pos 900x540
                #echo "xrandr --output $DISP --auto $EXTRA_R"
             ;;
             *)
@@ -96,10 +105,10 @@ case $NO_DISP in
                xrandr --output $DISP --auto
             ;;
             "$VGA")
-               xrandr --output $DISP --auto $EXTRA_VR $TURN
+               xrandr --output $DISP --auto $POS $TURN
             ;;
             *)
-               xrandr --output $DISP --auto $EXTRA_VR  $TURN
+               xrandr --output $DISP --auto $POS  $TURN
             ;;
          esac
       done
