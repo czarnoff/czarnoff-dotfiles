@@ -1,10 +1,5 @@
 #!/bin/bash
-#echo skype
-#skypeforlinux > /dev/null 2>&1 &
-#mslync &
-#echo Nifty Doorways!
-#vm &
-echo Synergy
-quicksynergy > /dev/null 2>&1 &
-echo Pomodone
-PomoDoneApp > /dev/null 2>&1 &
+fn-f7-switch.sh l L
+nmcli radio wifi on
+start_syn.sh c
+
