@@ -1,4 +1,12 @@
 set nocompatible
+
+"https://github.com/junegunn/vim-plug
+"if empty(glob('~/.vim/autoload/plug.vim'))
+"      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
+
 filetype plugin on
 filetype indent on
 call pathogen#infect()
@@ -123,10 +131,10 @@ autocmd filetype markdown map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<en
 
 "markdown
     autocmd filetype markdown,rmd inoremap ;n ---<enter><enter>
-    autocmd filetype markdown,rmd inoremap ;b ****<++><esc>f*hi
-    autocmd filetype markdown,rmd inoremap ;s ~~~~<++><esc>f~hi
-    autocmd filetype markdown,rmd inoremap ;e **<++><esc>f*i
-    autocmd filetype markdown,rmd inoremap ;h ====<space><++><esc>f=hi
+    autocmd filetype markdown,rmd inoremap ;b ****<++><esc>F*hi
+    autocmd filetype markdown,rmd inoremap ;s ~~~~<++><esc>F~hi
+    autocmd filetype markdown,rmd inoremap ;e **<++><esc>F*i
+    autocmd filetype markdown,rmd inoremap ;h ====<space><++><esc>F=hi
     autocmd filetype markdown,rmd inoremap ;i ![](<++>)<++><esc>F[a
     autocmd filetype markdown,rmd inoremap ;a [](<++>)<++><esc>F[a
     autocmd filetype markdown,rmd inoremap ;1 #<space><enter><enter><++><esc>kka
