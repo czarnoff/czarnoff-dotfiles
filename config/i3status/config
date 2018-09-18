@@ -13,6 +13,7 @@ general {
 }
 
 #order += "ipv6"
+order += "mpd music"
 order += "disk /"
 order += "disk /home"
 order += "wireless _first_"
@@ -25,6 +26,11 @@ order += "load"
 order += "cpu_temperature 0"
 order += "tztime local"
 order += "tztime berlin"
+
+mpd music{
+    format = "A:%artist T:%title"
+    format_down = "♪: --- "
+}
 
 wireless _first_ {
         format_up = "%essid: %ip %quality"
