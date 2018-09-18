@@ -13,6 +13,8 @@ then
     stop_syn.sh
     sleep 2
     systemctl suspend
+
+    nmcli radio wifi on
 fi
 
 scrot /tmp/screen.png
