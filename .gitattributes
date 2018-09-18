@@ -1,0 +1,4 @@
+.vim/autoload/* linguist-vendored
+.vim/bundle/* linguist-vendored
+.vim/ftplugin/* linguist-vendored
+.vim/plugin/* linguist-vendored
