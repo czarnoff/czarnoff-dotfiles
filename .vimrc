@@ -137,12 +137,12 @@ autocmd filetype markdown map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<en
     autocmd filetype markdown,rmd inoremap ;h ====<space><++><esc>F=hi
     autocmd filetype markdown,rmd inoremap ;i ![](<++>)<++><esc>F[a
     autocmd filetype markdown,rmd inoremap ;a [](<++>)<++><esc>F[a
-    autocmd filetype markdown,rmd inoremap ;1 #<space><enter><enter><++><esc>kka
-    autocmd filetype markdown,rmd inoremap ;2 ##<space><enter><enter><++><esc>kka
-    autocmd filetype markdown,rmd inoremap ;3 ###<space><enter><enter><++><esc>kka
-    autocmd filetype markdown,rmd inoremap ;4 ####<space><enter><enter><++><esc>kka
-    autocmd filetype markdown,rmd inoremap ;5 #####<space><enter><enter><++><esc>kka
-    autocmd filetype markdown,rmd inoremap ;6 ######<space><enter><enter><++><esc>kka
+    autocmd filetype markdown,rmd inoremap ;1 #<space><enter><enter><++><esc>kkA
+    autocmd filetype markdown,rmd inoremap ;2 ##<space><enter><enter><++><esc>kkA
+    autocmd filetype markdown,rmd inoremap ;3 ###<space><enter><enter><++><esc>kkA
+    autocmd filetype markdown,rmd inoremap ;4 ####<space><enter><enter><++><esc>kkA
+    autocmd filetype markdown,rmd inoremap ;5 #####<space><enter><enter><++><esc>kkA
+    autocmd filetype markdown,rmd inoremap ;6 ######<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;l --------<enter>
     autocmd Filetype markdown,rmd inoremap ;c ```<Enter><++><Enter>```<Esc>kkA
 
