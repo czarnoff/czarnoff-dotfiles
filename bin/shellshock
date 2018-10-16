@@ -1,1 +1,1 @@
-env z="() { :; }; echo vulnerable" bash -c "echo foo"
+env z="() { :; }; echo vulnerable" bash -c "echo good foo"
