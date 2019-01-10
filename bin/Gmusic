@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd gmusicproxy
+cd ~/gmusicproxy
 . bin/activate
 ./GMusicProxy&
