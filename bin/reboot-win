@@ -1,4 +1,6 @@
 #!/bin/bash
+unmute_all
+
 sudo /usr/sbin/grub-reboot 4
 sudo /sbin/reboot 
 
