@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "update"
-sudo aptitude update
+sudo apt update
 echo "upgrade"
 sudo aptitude upgrade -y
 echo "clean"
