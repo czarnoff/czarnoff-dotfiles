@@ -1,0 +1,3 @@
+#sudo openconnect --no-cert-check --juniper https://vpn.iba-group.com --user=jwillia $@
+sudo openconnect --juniper https://vpn.iba-group.com --user=jwillia $@
+#sudo openconnect --server-cert --juniper https://vpn.iba-group.com --user=jwillia $@
