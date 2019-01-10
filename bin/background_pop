@@ -1,5 +1,6 @@
 #!/bin/bash
-BG=`pidof -x background_pop -o %PPID`
+echo $PPID
+BGG=`pidof -x background_pop -o %PPID`
 CMD="feh --bg-max -z /home/jeffery/Pictures/Backgrounds/*" #/media/BFD/Pictures/backgrounds/*
 
 
@@ -9,8 +10,10 @@ do
    kill $PIDS_FOUND
    sleep 1
    kill -9 $PIDS_FOUND
+   echo continue
 done
 
+echo starting
 $CMD
 while sleep 900
 do
