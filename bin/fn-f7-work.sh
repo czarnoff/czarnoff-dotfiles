@@ -5,10 +5,11 @@ sleep 2
 #TODO: allow for options to change the setup from the below listed default.
 
 #For identifying our monitors use xrandr tool and view output
+#LVDS="LVDS1"      # ciould be another one like: LVDS, LVDS-1, etc
 LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
 HDMI2="HDMI1"
 HDMI3="HDMI2"
-VGA="DP2-3"
+VGA="VGA1"
 EXTRA_L="--left-of $VGA" # addtional info while dual display
 EXTRA_V="--left-of $LVDS" # addtional info while dual display
 EXTRA_VR="--right-of $LVDS" # addtional info while dual display

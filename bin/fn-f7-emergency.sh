@@ -1,7 +1,8 @@
 #!/bin/bash
  
 #For identifying our monitors use xrandr tool and view output
-LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
+#LVDS="LVDS1"      # could be another one like: LVDS, LVDS-1, etc
+LVDS="eDP1"      # could be another one like: LVDS, LVDS-1, etc
 xrandr >  ~/.local/xrandr
 CONNECTED_DISPLAYS=$(xrandr | grep " connected " | awk '{print $1}')
 DISCONNECTED_DISPLAYS=$(xrandr | grep " disconnected " | awk '{print $1}')
