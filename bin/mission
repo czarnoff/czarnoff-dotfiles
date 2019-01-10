@@ -6,10 +6,11 @@ clear
 figlet -c -t "ooooooo" | lolcat
 while [ -z $stuff ]
 do
-    figlet -c -t -f 3d "Protect
-    Enhance
-    and
-    Save Lives" | lolcat
+    figlet -c -t -f 3d "Trust
+    Respect
+    Collaboration
+    Innovation
+    Accountability" | lolcat
     figlet -c -t "ooooooo" | lolcat
     sleep 30
     stuff="$1"
