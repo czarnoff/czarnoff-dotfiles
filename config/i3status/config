@@ -24,8 +24,8 @@ order += "battery 0"
 order += "battery 1"
 order += "load"
 order += "cpu_temperature 0"
-order += "tztime local"
-order += "tztime berlin"
+order += "tztime CDT"
+order += "tztime EDT"
 
 mpd music{
     format = "A:%artist T:%title"
@@ -65,15 +65,16 @@ battery 1 {
         low_threshold = 10
 }
 
-tztime local {
-        format = "%H:%M"
+tztime CDT {
+        format = "CDT:%H:%M"
+        timezone = "America/Chicago"
         #color_good="#ff0000"
 }
 
-tztime berlin {
-        format = "EU:%time"
+tztime EDT {
+        format = "EDT:%time"
         format_time = "%H:%M"
-        timezone = "Europe/Berlin"
+        timezone = "America/Fort_Wayne"
         color_good="#ff8800"
 }
 
