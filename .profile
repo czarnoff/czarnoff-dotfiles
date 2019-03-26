@@ -34,6 +34,12 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Set docker in WSL.
+if [ -x '/mnt/c/Program Files/Docker/Docker/resources/bin/docker.exe' ] ; 
+then 
+    alias docker=docker.exe
+fi
+
 PATH="/usr/sbin:/usr/local/sbin:/sbin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
