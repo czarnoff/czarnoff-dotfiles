@@ -16,6 +16,7 @@ done
 
 pushd .
 cd config
+mkdir -p "$HOME/.config"
 for x in *
 do
    if [ -n $x -a "$x" != ".git" ]
