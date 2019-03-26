@@ -115,6 +115,7 @@ export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomo
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="python3"
 alias pylint="pylint3"
-alias xx='sudo pm-hibernate'
+alias k='taskell $HOME/vimwiki/taskell.md'
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 fortune | lolcat
+bindkey -M vicmd '\es' sudo-command-line
