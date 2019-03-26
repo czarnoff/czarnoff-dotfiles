@@ -28,11 +28,11 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-set shiftwidth=4
+set shiftwidth=2
 set cindent
 set autoindent
 set expandtab
-set tabstop=4
+set tabstop=2
 set showmatch
 set matchtime=7
 "set tw=80
