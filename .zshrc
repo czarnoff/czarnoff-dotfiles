@@ -119,4 +119,5 @@ alias xx='sudo pm-hibernate'
 alias k='taskell $HOME/vimwiki/taskell.md'
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 fortune | lolcat
+bindkey -v
 bindkey -M vicmd '\es' sudo-command-line
