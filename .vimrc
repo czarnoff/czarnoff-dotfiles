@@ -36,6 +36,7 @@ set tabstop=2
 set showmatch
 set matchtime=7
 "set tw=80
+set rtp+=~/.fzf
 
 autocmd! bufwritepost .vimrc source %
 
@@ -83,6 +84,8 @@ set cursorline
 set cursorcolumn
 set laststatus=2
 
+"autocmd filetype cpp set foldmethod=syntax
+"autocmd filetype c set foldmethod=syntax
 
 autocmd BufRead,BufNewFile *.log set syntax=log4j
 " turn spellchecker on for txt files
@@ -95,8 +98,8 @@ autocmd BufRead,BufNewFile *.markdown setlocal spell
 autocmd filetype rmd map <f5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>r<space>--vanilla<enter>
 autocmd filetype markdown map <f5> :!pandoc<space>'<c-r>%'<space>-o<space>'<c-r>%<bs><bs>pdf'<enter>
 "autocmd filetype markdown map <f5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>r<space>--vanilla<enter>
-autocmd filetype rmd map <leader><f5> :!zathura<space>'<c-r>%<bs><bs><bs>pdf'&<enter>
-autocmd filetype markdown map <leader><f5> :!zathura<space>'<c-r>%<bs><bs>pdf'&<enter>
+autocmd filetype rmd map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs><bs>pdf'&<enter>
+autocmd filetype markdown map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<enter>
 
 "navigating with guides
     inoremap <space><tab> <esc>/<++><enter>"_c4l
@@ -132,8 +135,10 @@ autocmd filetype markdown map <leader><f5> :!zathura<space>'<c-r>%<bs><bs>pdf'&<
 "markdown
     autocmd filetype markdown,rmd inoremap ;n ---<enter><enter>
     autocmd filetype markdown,rmd inoremap ;b ****<++><esc>F*hi
+    autocmd filetype markdown,rmd inoremap ;u ____<++><esc>F_hi
     autocmd filetype markdown,rmd inoremap ;s ~~~~<++><esc>F~hi
     autocmd filetype markdown,rmd inoremap ;e **<++><esc>F*i
+    autocmd filetype markdown,rmd inoremap ;c ``<++><esc>F`i
     autocmd filetype markdown,rmd inoremap ;h ====<space><++><esc>F=hi
     autocmd filetype markdown,rmd inoremap ;i ![](<++>)<++><esc>F[a
     autocmd filetype markdown,rmd inoremap ;a [](<++>)<++><esc>F[a
@@ -144,8 +149,9 @@ autocmd filetype markdown map <leader><f5> :!zathura<space>'<c-r>%<bs><bs>pdf'&<
     autocmd filetype markdown,rmd inoremap ;5 #####<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;6 ######<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;l --------<enter>
-    autocmd Filetype markdown,rmd inoremap ;c ```<Enter><++><Enter>```<Esc>kkA
+    autocmd Filetype markdown,rmd inoremap ;g ```<Enter><Enter>```<Enter><++><Esc>kkA
 
+    autocmd filetype cpp,c inoremap ;" ""<++><esc>F"i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " here begins my automated wordcount addition.
