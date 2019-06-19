@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
 INPUT=$(xinput | grep -i "synaptics" )
-echo $INPUT
+echo "$INPUT"
 
 
 if [ -n "$INPUT" ]
@@ -10,7 +10,7 @@ then
    do
       case $x in
          id*)
-            xinput set-prop $(echo $x | cut -d= -f2) "Device Enabled" 0
+            xinput set-prop $(echo "$x" | cut -d= -f2) "Device Enabled" 0
             ;;
          *)
             ;;
