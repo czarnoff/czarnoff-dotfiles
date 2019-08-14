@@ -84,8 +84,9 @@ set cursorline
 set cursorcolumn
 set laststatus=2
 
-"autocmd filetype cpp set foldmethod=syntax
-"autocmd filetype c set foldmethod=syntax
+autocmd filetype cpp set foldmethod=syntax
+autocmd filetype c set foldmethod=syntax
+autocmd filetype py set foldmethod=syntax
 
 autocmd BufRead,BufNewFile *.log set syntax=log4j
 " turn spellchecker on for txt files
@@ -192,8 +193,9 @@ set statusline+=\ %{WordCount()}\ words,
 set statusline+=\ %l/%l\ lines,\ %p " percentage through the file
 
 " highlight the status bar when in insert mode
-hi statusline cterm=NONE ctermbg=NONE ctermfg=black
+hi statusline cterm=NONE ctermbg=NONE ctermfg=blue
 au insertenter * hi statusline cterm=reverse ctermfg=Black ctermbg=blue
-au insertleave * hi statusline cterm=NONE ctermbg=NONE ctermfg=black
+au insertleave * hi statusline cterm=NONE ctermbg=NONE ctermfg=blue
 
 let @t='ggi---title:  <++> <++>author: Jeffery Williams---\tableofcontentsPLANNING: <++>'
+let @d='/^\/\/[ ]*DESCRIPTION0ls*!j0/\/\/\*kls */\/\/\*k$a/'
