@@ -17,6 +17,7 @@ then
     nmcli radio wifi on
 fi
 
+rm /tmp/screen.png
 scrot /tmp/screen.png
 
 notify-send -t 500 "Lock" "Locking screen."
