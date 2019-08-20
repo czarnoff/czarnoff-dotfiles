@@ -97,8 +97,8 @@ autocmd BufRead,BufNewFile *.markdown setlocal spell
 autocmd filetype rmd map <f5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>r<space>--vanilla<enter>
 autocmd filetype markdown map <f5> :!pandoc<space>'<c-r>%'<space>-o<space>'<c-r>%<bs><bs>pdf'<enter>
 "autocmd filetype markdown map <f5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>r<space>--vanilla<enter>
-autocmd filetype rmd map <leader><f5> :!zathura<space>'<c-r>%<bs><bs><bs>pdf'&<enter>
-autocmd filetype markdown map <leader><f5> :!zathura<space>'<c-r>%<bs><bs>pdf'&<enter>
+autocmd filetype rmd map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs><bs>pdf'&<enter>
+autocmd filetype markdown map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<enter>
 
 "navigating with guides
     inoremap <space><tab> <esc>/<++><enter>"_c4l
@@ -148,8 +148,9 @@ autocmd filetype markdown map <leader><f5> :!zathura<space>'<c-r>%<bs><bs>pdf'&<
     autocmd filetype markdown,rmd inoremap ;5 #####<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;6 ######<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;l --------<enter>
-    autocmd Filetype markdown,rmd inoremap ;g ```<Enter><++><Enter>```<Esc>kkA
+    autocmd Filetype markdown,rmd inoremap ;g ```<Enter><Enter>```<Enter><++><Esc>kkA
 
+    autocmd filetype cpp,c inoremap ;" ""<++><esc>F"i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " here begins my automated wordcount addition.
@@ -195,3 +196,5 @@ au insertenter * hi statusline cterm=reverse ctermfg=Black ctermbg=blue
 au insertleave * hi statusline cterm=NONE ctermbg=NONE ctermfg=black
 
 let @t='ggi---title:  <++> <++>author: Jeffery Williams---\tableofcontentsPLANNING: <++>'
+let @d='/^\/\/[ ]*DESCRIPTION0ls*!j0/\/\/\*kls */\/\/\*k$a/'
+let @l='ggi# :pu=strftime(\"%Y-%b-%d %a\")kJA <++>- <++>'
