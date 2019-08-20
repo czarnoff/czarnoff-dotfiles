@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ -n  "$1" ]
+then
+    vid="$1"
+else
+    vid="`fzf`"
+fi
+
+
+mpv "$vid" --volume=50 && rm -i "$vid"
