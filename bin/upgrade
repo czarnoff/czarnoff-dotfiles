@@ -6,7 +6,7 @@ sudo aptitude upgrade -y
 echo "clean"
 sudo aptitude autoclean
 echo -e "\ndeep-clean"
-sudo apt-get autoremove
+sudo apt-get autoremove --purge
 echo -e "\nTrim"
 sudo fstrim -av
 
