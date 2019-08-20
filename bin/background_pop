@@ -3,10 +3,10 @@ echo $PPID
 BGG=`pidof -x background_pop -o %PPID`
 CMD="feh --bg-max -z /home/jeffery/Pictures/Backgrounds/*" #/media/BFD/Pictures/backgrounds/*
 
-
-for PIDS_FOUND in $BG
+for PIDS_FOUND in $BGG
 do
    echo killing $PIDS_FOUND
+   notify-send -t 1000 "Background Pop" "Killing clone $PIDS_FOUND"
    kill $PIDS_FOUND
    sleep 1
    kill -9 $PIDS_FOUND
@@ -14,6 +14,7 @@ do
 done
 
 echo starting
+notify-send -t 1000 "Background Pop" "Showing love"
 $CMD
 while sleep 900
 do
