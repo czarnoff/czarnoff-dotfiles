@@ -199,3 +199,4 @@ au insertleave * hi statusline cterm=NONE ctermbg=NONE ctermfg=blue
 
 let @t='ggi---title:  <++> <++>author: Jeffery Williams---\tableofcontentsPLANNING: <++>'
 let @d='/^\/\/[ ]*DESCRIPTION0ls*!j0/\/\/\*kls */\/\/\*k$a/'
+let @l='ggi# :pu=strftime(\"%Y-%b-%d %a\")kJA <++>- <++>'
