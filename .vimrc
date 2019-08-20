@@ -37,6 +37,8 @@ set showmatch
 set matchtime=7
 "set tw=80
 
+source /usr/share/doc/fzf/examples/fzf.vim
+
 autocmd! bufwritepost .vimrc source %
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -78,7 +80,7 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 
-set foldenable
+"set foldenable
 set cursorline
 set cursorcolumn
 set laststatus=2
@@ -132,8 +134,10 @@ autocmd filetype markdown map <leader><f5> :!zathura<space>'<c-r>%<bs><bs>pdf'&<
 "markdown
     autocmd filetype markdown,rmd inoremap ;n ---<enter><enter>
     autocmd filetype markdown,rmd inoremap ;b ****<++><esc>F*hi
+    autocmd filetype markdown,rmd inoremap ;u ____<++><esc>F_hi
     autocmd filetype markdown,rmd inoremap ;s ~~~~<++><esc>F~hi
     autocmd filetype markdown,rmd inoremap ;e **<++><esc>F*i
+    autocmd filetype markdown,rmd inoremap ;c ``<++><esc>F`i
     autocmd filetype markdown,rmd inoremap ;h ====<space><++><esc>F=hi
     autocmd filetype markdown,rmd inoremap ;i ![](<++>)<++><esc>F[a
     autocmd filetype markdown,rmd inoremap ;a [](<++>)<++><esc>F[a
@@ -144,7 +148,7 @@ autocmd filetype markdown map <leader><f5> :!zathura<space>'<c-r>%<bs><bs>pdf'&<
     autocmd filetype markdown,rmd inoremap ;5 #####<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;6 ######<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;l --------<enter>
-    autocmd Filetype markdown,rmd inoremap ;c ```<Enter><++><Enter>```<Esc>kkA
+    autocmd Filetype markdown,rmd inoremap ;g ```<Enter><++><Enter>```<Esc>kkA
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
