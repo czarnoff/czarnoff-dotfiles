@@ -7,4 +7,4 @@ else
 fi
 
 
-mpv "$vid" --volume=50 && rm -i "$vid"
+mpv "$vid" --volume=100 && rm -i "$vid"
