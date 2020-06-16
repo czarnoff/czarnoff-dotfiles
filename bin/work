@@ -1,5 +1,3 @@
 #!/bin/bash
-fn-f7-switch.sh l L
-nmcli radio wifi on
-start_syn.sh c
-
+fn-f7-work.sh
+nmcli radio wifi off
