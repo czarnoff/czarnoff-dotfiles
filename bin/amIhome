@@ -1,0 +1,6 @@
+#!/bin/bash
+until  iwconfig wlp3s0 | grep ESSID | grep hangargate 
+do
+#    echo no
+    sleep 10
+done
