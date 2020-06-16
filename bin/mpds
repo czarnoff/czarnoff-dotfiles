@@ -1,0 +1,29 @@
+#!/bin/bash
+BGG=`pidof -x mpd`
+
+if [ -z "$1" -a -n "BGG" ]
+then
+    echo "mpd running nothing to do"
+else
+    mpd --kill
+    sleep 1
+    echo $BGG
+    BGG=`pidof -x mpd`
+    echo  $BGG
+    for PIDS_FOUND in $BGG
+    do
+        echo killing mpd: $PIDS_FOUND
+        notify-send -t 1000 "mpd" "Killing spare clone $PIDS_FOUND"
+        kill $PIDS_FOUND >> /dev/null
+        sleep 1
+        kill -9 $PIDS_FOUND >> /dev/null
+        echo continue
+    done
+    if [ "-k" = "$1" ]
+    then
+        exit 0
+    fi
+    nohup mpd
+fi
+exit 0
+
