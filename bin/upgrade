@@ -1,13 +1,24 @@
 #!/bin/bash
-echo "update"
-sudo apt update
-echo "upgrade"
-sudo aptitude upgrade -y
-echo "clean"
+
+if [ "$1" != "-e" ]
+then
+    out='echo -e'
+else
+    out=espeak
+fi
+
+if [ "$1" != "-n" ]
+then
+  $out "update"
+  sudo apt update
+fi
+$out "upgrade"
+sudo apt upgrade -y
+$out "clean"
 sudo aptitude autoclean
-echo -e "\ndeep-clean"
+$out "\ndeep-clean"
 sudo apt-get autoremove --purge
-echo -e "\nTrim"
+$out "\nTrim"
 sudo fstrim -av
 
 #sudo fstrim /media/76C8AE3CC8ADFB0F
