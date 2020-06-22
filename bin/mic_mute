@@ -1,5 +1,5 @@
 #!/bin/bash
-SINKZ=`pactl list short sinks`
+SINKZ=`pactl list short sources`
 echo  $SINKZ
 
 case "$1" in 
@@ -19,18 +19,18 @@ case "$2" in
 
         for x in `cut -f1 <<< $SINKZ`
         do
-            echo "pactl set-sink-mute $x $style"
-            pactl set-sink-mute $x $style
+            echo "pactl set-source-mute $x $style"
+            pactl set-source-mute $x $style
         done
         ;;
     "m")
-        analog=`grep analog-stereo <<< $SINKZ`
+        analog=`grep analog-stereo <<< $SINKZ | grep input`
         echo ${analog%%[a-z]*}
-        pactl set-sink-mute ${analog%%[a-z]*} $style
+        pactl set-source-mute ${analog%%[a-z]*} $style
         ;;
     "b")
         analog=`grep bluez <<< $SINKZ`
         echo ${analog%%[a-z]*}
-        pactl set-sink-mute ${analog%%[a-z]*} $style
+        pactl set-source-mute ${analog%%[a-z]*} $style
         ;;
 esac

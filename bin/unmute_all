@@ -1,9 +1,28 @@
 #!/bin/bash
-SINKZ=`pactl list short sinks | cut -f1`
+SINKZ=`pactl list short sinks`
+echo  $SINKZ
 
-for x in $SINKZ
-do
-    echo "pactl set-sink-mute $x 0"
-    pactl set-sink-mute $x 0
-done
+
+case "$1" in
+    "a"|"")
+
+        for x in `cut -f1 <<< $SINKZ`
+        do
+            echo "pactl set-sink-mute $x 0"
+            pactl set-sink-mute $x 0
+        done
+        ;;
+    "m")
+        analog=`grep analog-stereo <<< $SINKZ`
+        echo ${analog%%[a-z]*}
+        pactl set-sink-mute ${analog%%[a-z]*} 0
+        ;;
+    "b")
+        analog=`grep bluez <<< $SINKZ`
+        echo ${analog%%[a-z]*}
+        pactl set-sink-mute ${analog%%[a-z]*} 0
+        ;;
+        
+esac
+SINKZ=`pactl list short sinks | cut -f1`
 

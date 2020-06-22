@@ -3,14 +3,20 @@ SINKZ=`pactl list short sinks`
 echo  $SINKZ
 
 case "$1" in 
-    "t"|"")
-        style="toggle"
+    "D")
+        style="-20%"
         ;;
-    "m")
-        style=1
+    "d")
+        style="-5%"
+        ;;
+    "P")
+        style="+20%"
         ;;
     "u")
-        style=0
+        style="+5%"
+        ;;
+    "")
+        style="35000"
         ;;
 esac
 
@@ -19,18 +25,18 @@ case "$2" in
 
         for x in `cut -f1 <<< $SINKZ`
         do
-            echo "pactl set-sink-mute $x $style"
-            pactl set-sink-mute $x $style
+            echo "pactl set-sink-volume $x $style"
+            pactl set-sink-volume $x $style
         done
         ;;
     "m")
         analog=`grep analog-stereo <<< $SINKZ`
         echo ${analog%%[a-z]*}
-        pactl set-sink-mute ${analog%%[a-z]*} $style
+        pactl set-sink-volume ${analog%%[a-z]*} $style
         ;;
     "b")
         analog=`grep bluez <<< $SINKZ`
         echo ${analog%%[a-z]*}
-        pactl set-sink-mute ${analog%%[a-z]*} $style
+        pactl set-sink-volume ${analog%%[a-z]*} $style
         ;;
 esac
