@@ -6,6 +6,7 @@ then
     exit
 fi
 
+
 cd "$HOME/Videos/new"
 
-tsp youtube-dl --continue $@
+tsp yt-dlp --config-location "$HOME/.config/youtube-dl/config" $@
