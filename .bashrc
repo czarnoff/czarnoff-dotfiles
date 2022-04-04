@@ -136,7 +136,7 @@ USER_HOSTNAME=`echo "ibase=16; ( $(hostname | md5sum | sed 's/\(.*\)/\U\1/g' ) 0
 echo "even more term mucking"
 # Change the window title of X terminals
 case $TERM in
-	screen|xterm*|rxvt|Eterm|eterm)
+	screen|screen-256color|xterm*|rxvt|Eterm|eterm|st-256color)
     #PS1='\[\033]0;\u@\h:\!: \w\007\]\[\033[0;33m\]\t\w\n\[\033[00;34m\]\u\[\033[00;31m\]@\h:\$ \[\033[00m\]'
     U_H1=`echo "$USER_HOSTNAME % 6 + 1"|bc`
     U_H2=`echo "$USER_HOSTNAME / 6 + 1"|bc`
