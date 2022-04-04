@@ -23,6 +23,7 @@ else
     then
         exit 0
     fi
+    cd ~
     nohup mpd
 fi
 exit 0
