@@ -3,7 +3,7 @@
 
 #For identifying our monitors use xrandr tool and view output
 #LVDS="LVDS1"      # ciould be another one like: LVDS, LVDS-1, etc
-LVDS="eDP1"      # ciould be another one like: LVDS, LVDS-1, etc
+LVDS="eDP"      # ciould be another one like: LVDS, LVDS-1, etc
 HDMI2="HDMI1"
 HDMI3="HDMI2"
 VGA="VGA1"
@@ -16,7 +16,7 @@ CONNECTED_DISPLAYS=$(xrandr | grep " connected " | awk '{print $1}')
 DISCONNECTED_DISPLAYS=$(xrandr | grep " disconnected " | awk '{print $1}')
 NO_DISP=$(echo $CONNECTED_DISPLAYS | wc -w)
 
-TURN="--rotate left"
+TURN="--rotate normal"
 POS=$EXTRA_V
 
 for arg in $1 $2; do
@@ -122,3 +122,5 @@ case $NO_DISP in
 esac
 
 sleep 1
+nohup background_pop &
+notify-send -t 1000 "fn-f7" "Monitor setup complete."
