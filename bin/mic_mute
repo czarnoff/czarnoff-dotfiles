@@ -3,34 +3,39 @@ SINKZ=`pactl list short sources`
 echo  $SINKZ
 
 case "$1" in 
-    "t"|"")
-        style="toggle"
-        ;;
-    "m")
-        style=1
-        ;;
-    "u")
-        style=0
-        ;;
+  "t"|"")
+    style="toggle"
+    ;;
+  "m")
+    style=1
+    ;;
+  "u")
+    style=0
+    ;;
 esac
 
 case "$2" in
-    "a"|"")
+  "a"|"")
 
-        for x in `cut -f1 <<< $SINKZ`
-        do
-            echo "pactl set-source-mute $x $style"
-            pactl set-source-mute $x $style
-        done
-        ;;
-    "m")
-        analog=`grep analog-stereo <<< $SINKZ | grep input`
-        echo ${analog%%[a-z]*}
-        pactl set-source-mute ${analog%%[a-z]*} $style
-        ;;
-    "b")
-        analog=`grep bluez <<< $SINKZ`
-        echo ${analog%%[a-z]*}
-        pactl set-source-mute ${analog%%[a-z]*} $style
-        ;;
+    for x in `cut -f1 <<< $SINKZ`
+    do
+      echo "pactl set-source-mute $x $style"
+      pactl set-source-mute $x $style
+    done
+    ;;
+  "m")
+
+    for x in `grep alsa_input <<< $SINKZ`
+    do
+      echo ${x%%[a-z]*}
+      pactl set-source-mute ${x%%[a-z]*} $style
+    done
+    ;;
+  "b")
+    for x in `grep bluez <<< $SINKZ`
+    do
+      echo ${x%%[a-z]*}
+      pactl set-source-mute ${x%%[a-z]*} $style
+    done
+    ;;
 esac
