@@ -7,9 +7,9 @@ for PIDS_FOUND in $BGG
 do
    echo killing $PIDS_FOUND
    notify-send -t 1000 "Background Pop" "Killing clone $PIDS_FOUND"
-   kill $PIDS_FOUND
+   kill $PIDS_FOUND > /dev/null
    sleep 1
-   kill -9 $PIDS_FOUND
+   kill -9 $PIDS_FOUND > /dev/null
    echo continue
 done
 
