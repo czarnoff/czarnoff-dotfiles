@@ -30,7 +30,7 @@ case "$2" in
         done
         ;;
     "m")
-        analog=`grep analog-stereo <<< $SINKZ`
+        analog=`grep alsa_output <<< $SINKZ`
         echo ${analog%%[a-z]*}
         pactl set-sink-volume ${analog%%[a-z]*} $style
         ;;
