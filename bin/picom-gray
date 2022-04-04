@@ -1,0 +1,30 @@
+#!/bin/bash
+if [ -z "$1" ]
+then
+    thing='amber'
+else
+    if [ "$1" = "none" ]
+    then
+        thing=""
+    else
+        thing="$1"
+    fi
+fi
+
+PIC=`pidof -x picom`
+for PIDS_FOUND in $PIC
+do
+    kill $PIDS_FOUND > /dev/null
+    sleep 1
+    kill -9 $PIDS_FOUND > /dev/null 2>&1
+done
+
+echo thing:$thing
+
+if [ -z "$thing" ]
+then
+    picom &
+else
+    echo color:$thing
+    picom --glx-fshader-win "$(cat ~/.config/picom/$thing.glsl)" --xrender-sync-fence &
+fi
