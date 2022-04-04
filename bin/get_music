@@ -28,5 +28,6 @@ cat /dev/null > ~/Music/playlists/"$filename"_all.m3u
 for x in `grep -i http ~/Music/"$filename"_albums.m3u`
 do
     curl $x >> ~/Music/playlists/"$filename"_all.m3u
+    sync ~/Music/playlists/"$filename"_all.m3u
 done
 
