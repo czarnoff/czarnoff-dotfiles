@@ -1,3 +1,4 @@
 #!/bin/bash
-fn-f7-work.sh
-nmcli radio wifi off
+fn-f7-work.sh && xrandr --output DP2 --off
+#nmcli radio wifi off
+nmcli device wifi hotspot
