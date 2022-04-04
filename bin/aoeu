@@ -7,19 +7,25 @@ fix_screen.sh >> /dev/null
 echo mouse
 fix_mouse.sh
 echo xrandr
-fn-f7-emergency.sh
+fn-f7-work.sh
 #nm-applet &
 #echo bluetooth
 #e7
 #echo player
 #google-play-music-desktop-player > /dev/null &
+#sleep 3
+#swap caps and esc
+echo spap esc move
+swapesc
 echo ssa
 . ssa
-#swap caps and esc
-#echo esc move
-#swapesc
-echo discord
-discord &
-#Screen
-echo screen
-tmux new-session -A -s dropdown
+echo mpd
+mpds -k
+mopidy &
+echo nextcloud
+nextcloud &
+#echo discord
+#discord &
+#echo statusbar
+#(i3status| while read LINE; do xsetroot -name "$LINE"; done) &
+exec zsh
