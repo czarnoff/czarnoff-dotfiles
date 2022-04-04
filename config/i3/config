@@ -205,6 +205,8 @@ mode "resize" {
 
 bindsym $mod+Shift+r mode "resize"
 
+bindsym $mod+Shift+k exec --no-startup-id swapesc
+
 bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym XF86AudioPlay exec --no-startup-id mpc toggle
 
@@ -236,7 +238,12 @@ bar {
         position top
         tray_output primary
         colors {
-           statusline #ff00ff
+           statusline #d33682
+           background #002b36
+           focused_workspace  #073642 #002b36 #2aa198
+           active_workspace   #073642 #002b36 #839496
+           inactive_workspace   #073642 #002b36 #93a1a1
+           urgent_workspace   #073642 #002b36 #dc322f
         }
 #font pango:monospace 7
         font pango:DejaVu Sans Mono 6
@@ -274,7 +281,7 @@ exec --no-startup-id blueman-applet
 # Keyboard and mouse management
 exec --no-startup-id solaar
 # Keyboard capslock indicator
-exec --no-startup-id indicator-keylock
+#exec --no-startup-id indicator-keylock
 
 # Make notifications less annoying
 exec --no-startup-id twmnd

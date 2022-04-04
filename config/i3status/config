@@ -9,7 +9,10 @@
 general {
         colors = true
         interval = 5
-        color_good = "#00ffff"
+        color_good = "#2aa198"
+        color_bad = "#dc322f"
+        color_degraded = "#b58900"
+        output_format="none"
 }
 
 #order += "ipv6"
@@ -24,8 +27,8 @@ order += "battery 0"
 order += "battery 1"
 order += "load"
 order += "cpu_temperature 0"
-order += "tztime CDT"
-order += "tztime EDT"
+order += "tztime other"
+order += "tztime Home"
 
 mpd music{
     format = "A:%artist T:%title"
@@ -54,28 +57,28 @@ battery 0 {
         low_threshold = 10
 }
 
-battery 1 {
-        format = "1 %status %percentage %remaining"
-        status_chr = "⚡"
-        status_bat = "🔋"
-        status_unk = "?"
-        status_full = "☻"
-        path = "/sys/class/power_supply/BAT%d/uevent"
-#last_full_capacity = true
-        low_threshold = 10
-}
+#battery 1 {
+#        format = "1 %status %percentage %remaining"
+#        status_chr = "⚡"
+#        status_bat = "🔋"
+#        status_unk = "?"
+#        status_full = "☻"
+#        path = "/sys/class/power_supply/BAT%d/uevent"
+##last_full_capacity = true
+#        low_threshold = 10
+#}
 
-tztime CDT {
-        format = "CDT:%H:%M"
-        timezone = "America/Chicago"
+tztime other {
+        format = "PDT:%H:%M"
+        timezone = "America/Los_Angeles"
         #color_good="#ff0000"
 }
 
-tztime EDT {
-        format = "EDT:%time"
-        format_time = "%H:%M"
-        timezone = "America/Fort_Wayne"
-        color_good="#ff8800"
+tztime Home {
+        format = "EDT:%H:%M"
+#format_time = "%H:%M"
+        timezone = "America/Indianapolis"
+        color_good="#2aa198"
 }
 
 load {
@@ -94,7 +97,7 @@ disk "/home" {
 volume master {
    format = "♪: %volume"
    format_muted = "♪: muted (%volume)"
-   device = "pulse:alsa_output.pci-0000_00_1b.0.analog-stereo"
+   device = "default"
 }
 
 volume e7 {
@@ -104,6 +107,6 @@ volume e7 {
 }
 cpu_temperature 0 {
    format = "°C: %degrees"
-   path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
+   path = "/sys/class/thermal/thermal_zone0/hwmon*/temp1_input"
 }
 
