@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "level 7" | sudo tee '/proc/acpi/ibm/fan'
+echo "level full-speed" | sudo tee '/proc/acpi/ibm/fan'
