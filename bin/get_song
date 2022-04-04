@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+if [ -n "$2" ]
+then
+  tsp yt-dlp  $1 -f 'ba' -x --audio-format mp3 -o "$2".mp3
+else
+  tsp yt-dlp  $1 -f 'ba' -x --audio-format mp3
+fi
