@@ -1,0 +1,40 @@
+#!/bin/bash
+CMD="picom-gray none"
+CMD2="picom-gray"
+
+#4:30 in seconds
+color_time='59400'
+#color_time='0'
+gray_time='00:00'
+
+echo $PPID
+COMPPID=`pidof -x $0 -o %PPID`
+
+for PIDS_FOUND in $COMPPID
+do
+   echo killing $PIDS_FOUND
+   notify-send -t 1000 "COMPPID" "Killing clone $PIDS_FOUND"
+   kill $PIDS_FOUND > /dev/null
+   sleep 1
+   kill -9 $PIDS_FOUND > /dev/null
+   echo continue
+done
+
+function runit {
+    if test $(( $(date +%s) - $(date -d $gray_time +%s) )) -ge $color_time
+      then
+          $CMD &
+      else
+         $CMD2 &
+    fi
+}
+
+runit
+notify-send -t 1000 "start $CMD"
+
+while (sleep $((60*60)))
+do
+
+    notify-send -t 1000 "start $CMD `date`"
+    runit
+done
