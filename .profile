@@ -43,3 +43,6 @@ PATH="/usr/sbin:/usr/local/sbin:/sbin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jeffery/.sdkman"
 [[ -s "/home/jeffery/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jeffery/.sdkman/bin/sdkman-init.sh"
+export LOCATION=46738
+
+setxkbmap dvorak
