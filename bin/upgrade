@@ -1,5 +1,11 @@
 #!/bin/bash
+# Orignially written for apt.  Adding pacman/yay to the mix
 
+deb_bin='apt'
+
+arch_bin='yay' #pacman, yay, other
+
+#Read parameters
 if [ "$1" != "-e" ]
 then
     out='echo -e'
@@ -7,17 +13,35 @@ else
     out=espeak
 fi
 
-if [ "$1" != "-n" ]
+#determin how to upgrade
+if  (which $deb_bin >/dev/null 2>&1)
 then
-  $out "update"
-  sudo apt update
+    $out "use $deb_bin"
+    if [ "$1" != "-n" ]
+    then
+        $out "update"
+        sudo $deb_bin update
+    fi
+    $out "upgrade"
+    sudo $deb_bin upgrade -y
+    $out "clean"
+    sudo aptitude autoclean
+    $out "\ndeep-clean"
+    sudo apt-get autoremove --purge
+elif (which $arch_bin >/dev/null 2>&1)
+then
+    $out "use $arch_bin"
+    $out "upgrade"
+    $arch_bin -Suy
+    $out "clean"
+    $arch_bin -Sc
+    $out "deepclean"
+    $arch_bin -R `$arch_bin -Qdt | awk '{print $1}'`
+else
+    $out "system not supported"
+    exit 1
 fi
-$out "upgrade"
-sudo apt upgrade -y
-$out "clean"
-sudo aptitude autoclean
-$out "\ndeep-clean"
-sudo apt-get autoremove --purge
+
 $out "\nTrim"
 sudo fstrim -av
 
