@@ -9,7 +9,7 @@ set nocompatible
 
 filetype plugin on
 filetype indent on
-call pathogen#infect()
+"call pathogen#infect()
 filetype indent on
 if &term == "Eterm"
    set t_kb=
@@ -18,6 +18,32 @@ endif
 "au BufNewFile,BufRead *.c set nu
 "au BufNewFile,BufRead *.cpp set nu
 "au BufNewFile,BufRead *.py set nu
+
+call plug#begin('~/.vim/plugged')
+" Use release branch (Recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'vimwiki/vimwiki'
+Plug 'pboettch/vim-cmake-syntax'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'dhruvasagar/vim-vinegar'
+Plug 'ap/vim-css-color'
+Plug 'vifm/vifm.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'michal-h21/vim-zettel'
+
+call plug#end()
+
+let g:coc_global_extensions = [
+            \ 'coc-python',
+            \ 'coc-json',
+            \ 'coc-xml',
+            \ 'coc-calc',
+            \ ]
+"            \ 'coc-pairs',
+
 
 set number relativenumber
 set encoding=utf-8
@@ -28,16 +54,14 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-set shiftwidth=4
+set shiftwidth=2
 set cindent
 set autoindent
 set expandtab
-set tabstop=4
+set tabstop=2
 set showmatch
 set matchtime=7
 "set tw=80
-
-source /usr/share/doc/fzf/examples/fzf.vim
 
 autocmd! bufwritepost .vimrc source %
 
@@ -65,11 +89,12 @@ set clipboard=unnamed
 vnoremap < <gv " better indent
 vnoremap > >gv " better indent
 
+nnoremap <C-p> :Files<Cr>
+
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
@@ -77,13 +102,30 @@ set complete+=kspell
 
 " vimwiki with markdown support
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'links_space_char': '_', 'syntax': 'markdown', 'ext': '.md'}, {'path': '~/bookwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+"{'path': '~/Dropbox/PersonalWiki/', 'syntax': 'markdown', 'ext': '.txt'}]
 
+let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always "
+let g:zettel_options = [{}, {"front_mater" : {"tags" : ""}, "template" : "/home/jeffery/.vim/zTemplate.tpl"}]
+let g:zettel_format = "%y%m%d-%H%M-%title"
 
-"set foldenable
+set foldenable
 set cursorline
 set cursorcolumn
 set laststatus=2
+
+set directory^=$HOME/.vimswap//
+
+"autocmd VimEnter * NERDTree
+nmap <c-f> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <leader>f :NERDTreeFind<CR>
+
+
+autocmd filetype cpp set foldmethod=syntax
+autocmd filetype c set foldmethod=syntax
+autocmd filetype py set foldmethod=syntax
+autocmd FileType gitcommit set foldmethod=syntax
 
 
 autocmd BufRead,BufNewFile *.log set syntax=log4j
@@ -96,15 +138,19 @@ autocmd BufRead,BufNewFile *.markdown setlocal spell
 
 autocmd filetype rmd map <f5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>r<space>--vanilla<enter>
 autocmd filetype markdown map <f5> :!pandoc<space>'<c-r>%'<space>-o<space>'<c-r>%<bs><bs>pdf'<enter>
+autocmd filetype text map <f5> :!pandoc<space>'<c-r>%'<space>-o<space>'<c-r>%<bs><bs>pdf'<enter>
 "autocmd filetype markdown map <f5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>r<space>--vanilla<enter>
 autocmd filetype rmd map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs><bs>pdf'&<enter>
 autocmd filetype markdown map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<enter>
+autocmd filetype text map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<enter>
 
 "navigating with guides
     inoremap <space><tab> <esc>/<++><enter>"_c4l
     vnoremap <space><tab> <esc>/<++><enter>"_c4l
     map <space><tab> <esc>/<++><enter>"_c4l
     inoremap ;qjk <++>
+    inoremap ;date <c-r>=strftime('%F')<enter><space>
+    inoremap ;time <c-r>=strftime('%H:%M')<enter><space>
 
 """php
     autocmd filetype php,html inoremap ;b <b></b><space><++><esc>fbt>i
@@ -141,6 +187,7 @@ autocmd filetype markdown map <leader><f5> :!mupdf<space>'<c-r>%<bs><bs>pdf'&<en
     autocmd filetype markdown,rmd inoremap ;h ====<space><++><esc>F=hi
     autocmd filetype markdown,rmd inoremap ;i ![](<++>)<++><esc>F[a
     autocmd filetype markdown,rmd inoremap ;a [](<++>)<++><esc>F[a
+    autocmd filetype markdown,rmd inoremap ;t <++><esc>O<esc>O-<space>[<space>]<space>
     autocmd filetype markdown,rmd inoremap ;1 #<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;2 ##<space><enter><enter><++><esc>kkA
     autocmd filetype markdown,rmd inoremap ;3 ###<space><enter><enter><++><esc>kkA
