@@ -13,7 +13,7 @@ case "$1" in
         done
         ;;
     "m")
-        analog=`grep analog-stereo <<< $SINKZ`
+        analog=`grep alsa_output <<< $SINKZ`
         echo ${analog%%[a-z]*}
         pactl set-sink-mute ${analog%%[a-z]*} 0
         ;;
