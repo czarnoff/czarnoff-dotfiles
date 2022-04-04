@@ -1,0 +1,4 @@
+#!/bin/bash 
+#Screen
+echo screen
+tmux new-session -A -s dropdown /home/jeffery/bin/aoeu
