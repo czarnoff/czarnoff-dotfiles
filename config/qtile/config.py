@@ -54,9 +54,9 @@ def modify_window(client):
 
 
 #applications
-dropSt="st -n dropdown -e /home/jeffery/bin/dropdown"
+dropSt="alacritty -t dropdown -e /home/jeffery/bin/dropdown"
 dropPauv="pavucontrol"
-st=["st", "-e", "tmux"]
+st=["alacritty", "-e", "tmux"]
 
 
 mod = "mod4"
@@ -68,10 +68,10 @@ def latest_group(qtile):
 
 keys = [
     # Switch between windows
-      Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
-      Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
-      Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
-      Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
     KeyChord([mod], "w", [
       Key([], "Left", lazy.layout.left(), desc="Move focus to left"),
       Key([], "Right", lazy.layout.right(), desc="Move focus to right"),
@@ -123,10 +123,13 @@ keys = [
       # Split = all windows displayed
       # Unsplit = 1 window displayed, like Max layout, but still with
       Key(["shift"], "Return", lazy.layout.max(),),
-      # multiple stack panes
+    # multiple stack panes
       Key(["shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack")],
+          desc="Toggle between split and unsplit sides of stack")],
       mode="windows"),
+    Key([mod], "space", lazy.layout.next(),
+        desc="Move window focus to other window"),
+    Key([mod], "z", lazy.window.toggle_fullscreen()),
 
     #commands
     Key([],"XF86AudioMicMute", lazy.spawn("mic_mute t m"), desc="Mute computer"),
@@ -139,7 +142,9 @@ keys = [
     Key([],"XF86Display", lazy.spawn("fn-f7-emergency.sh"), desc="Just laptop monitor"),
     Key(["shift"],"XF86Display", lazy.spawn("fn-f7-work.sh"), desc="Work monitors monitor"),
     Key([mod], "Return", lazy.spawn(st), desc="Launch terminal"),
-    Key([mod,"shift"], "Return", lazy.spawn("st"), desc="Launch terminal"),
+    Key([mod,"shift"], "a", lazy.spawn("alacritty_fix o"), desc="Launch terminal"),
+    Key([mod,"control"], "a", lazy.spawn("alacritty_fix c"), desc="Launch terminal"),
+    Key([mod,"shift"], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
     Key([mod], "r", lazy.spawn("rofi -show run"),
         desc="Spawn a command using a prompt widget"),
     Key([mod], "l", lazy.spawn("lock.sh"),
@@ -152,14 +157,15 @@ keys = [
     Key([mod,"shift"], "n", lazy.spawn("mpc next")),
 
     #scratchpad
-    Key([mod], "m", lazy.group["scratchpad"].dropdown_toggle("Dropdown"), desc="dropSt"),
+    Key([mod,"shift"], "m", lazy.group["scratchpad"].dropdown_toggle("Dropdown"), desc="dropSt"),
     Key([mod], "v", lazy.group["scratchpad"].dropdown_toggle("pavucontrol"), desc="dropPauv"),
 
     # Toggle between different layouts as defined below
     Key([mod], "b", lazy.hide_show_bar("top")),
     Key([mod], "Tab", lazy.function(latest_group), desc="Toggle between layouts"),
     Key([mod], "f", lazy.next_layout(), desc="Toggle between layouts"),
-    Key( [mod, "shift"], "m", lazy.group.setlayout('max'), desc="max"),
+    Key( [mod], "m", lazy.group.setlayout('max'), desc="max"),
+    Key([mod,"shift"], "space", lazy.window.toggle_floating()),
     Key([mod,"shift"], "grave", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
@@ -227,25 +233,44 @@ color_schemes = [
     ]
 
 layouts = [
-    layout.Columns(border_width=4),
-    layout.Max(),
+    #layout.Columns(border_width=4),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-     layout.Matrix(),
-     layout.MonadTall(),
-     layout.MonadWide(),
-     layout.RatioTile(),
+    # layout.Matrix(),
+     layout.RatioTile(
+       border_focus=theme['magenta'],
+       border_normal=theme['base01'],
+       ),
+     layout.Bsp(
+       border_focus=theme['blue'],
+       border_normal=theme['base01'],
+       ),
+     layout.MonadTall(
+       border_focus=theme['violet'],
+       border_normal=theme['base01'],
+       ),
+     layout.MonadWide(
+       border_focus=theme['violet'],
+       border_normal=theme['base01'],
+       ),
     # layout.Tile(),
-     layout.TreeTab(),
-     layout.VerticalTile(),
-     layout.Zoomy(),
+     layout.TreeTab(
+       bg_color=theme['base03'],
+       active_bg=theme['base02'],
+       active_fg=theme['cyan'],
+       inactive_bg=theme['base02'],
+       inactive_fg=theme['base0'],
+       urgent_bg=theme['base02'],
+       urgent_fg=theme['magenta'],
+       section_fg=theme['base0'],
+       ),
+     layout.Max(),
 ]
 
 widget_defaults = dict(
-    font='sans',
-    fontsize=10,
-    padding=3,
+    font='Hack',
+    fontsize=12,
+    padding=3
 )
 #extension_defaults = widget_defaults.copy()
 
@@ -263,6 +288,10 @@ def add_widgets(bar):
       urgent_border=theme['red'],
       background=theme['base03'],
       highlight_method='block',
+      ),
+    widget.WindowCount(
+      foreground=theme['base0'],
+      background=theme['base03']
       ),
     widget.Prompt(),
     widget.WindowName(
@@ -284,17 +313,18 @@ def add_widgets(bar):
       foreground=theme['base0'],
       background=theme['base03'],
       ),
-    widget.BatteryIcon( background=theme['base03'],),
     widget.Clock(
       format='%a %H:%M',
       foreground=theme['base0'],
       background=theme['base03'],
       ),
+    widget.BatteryIcon( background=theme['base03'],),
     ]
   return bar
 
 main_bar=add_widgets([])
 main_bar=main_bar+ [
+    widget.Battery(foreground=theme['base0'], background=theme['base03'],),
     widget.Systray(
       background=theme['base03'],
       ),
@@ -314,7 +344,7 @@ screens = [
         top=bar.Bar(
           main_bar,
             20,
-        )
+        ),
     ),
 ]
 
