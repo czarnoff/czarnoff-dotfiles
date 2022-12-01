@@ -126,7 +126,7 @@ keys = [
     # multiple stack panes
       Key(["shift"], "Return", lazy.layout.toggle_split(),
           desc="Toggle between split and unsplit sides of stack")],
-      mode="windows"),
+      name="windows"),
     Key([mod], "space", lazy.layout.next(),
         desc="Move window focus to other window"),
     Key([mod], "z", lazy.window.toggle_fullscreen()),
