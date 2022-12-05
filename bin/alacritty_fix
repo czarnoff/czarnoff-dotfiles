@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+## If alacritty.yml does not exist, raise an alert
+[[ ! -f ~/.config/alacritty/alacritty.yml ]] && \
+    notify-send  "$0" "alacritty.yml does not exist" && exit 0
+
+opacity_fix() {
+ ## Fetch background_opacity from alacritty.yml
+ opacity=$(awk '$1 == "opacity:" {print $2; exit}' \
+     ~/.config/alacritty/alacritty.yml)
+ 
+ ## Assign toggle opacity value
+ case $opacity in
+   1)
+     toggle_opacity=0.8
+     ;;
+   *)
+     toggle_opacity=1
+     ;;
+ esac
+ ## Replace opacity value in alacritty.yml
+ sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" \
+     ~/.config/alacritty/alacritty.yml
+}
+
+theme_switch() {
+ ## Fetch background_opacity from alacritty.yml
+ color=$(awk '$1 == "colors:" {print $2; exit}' \
+     ~/.config/alacritty/alacritty.yml| cut -d\* -f2)
+
+ ## Assign toggle opacity value
+ case $color in
+   "dark")
+     toggle_color="*light"
+     ;;
+   *)
+     toggle_color="*dark"
+     ;;
+ esac
+ ## Replace opacity value in alacritty.yml
+  sed -i -- "s/colors: \*$color/colors: $toggle_color/" ~/.config/alacritty/alacritty.yml
+}
+
+for x in "$@"
+do
+  case $x in
+    o)
+      opacity_fix
+      ;;
+    c)
+      theme_switch
+      ;;
+    h)
+      echo "$0 :
+        o - toggle opacity
+        c - toggle color"
+      exit 0
+      ;;
+    *)
+      notify-send "$0" "Invalid option - $x"
+      ;;
+  esac
+done
