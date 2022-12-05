@@ -11,6 +11,8 @@ fn-f7-work.sh
 #nm-applet &
 #echo bluetooth
 #e7
+echo polkit
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 #echo player
 #google-play-music-desktop-player > /dev/null &
 #sleep 3
