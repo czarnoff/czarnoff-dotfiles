@@ -123,4 +123,5 @@ esac
 
 sleep 1
 nohup background_pop &
+echo 'restart()' | qtile shell
 notify-send -t 1000 "fn-f7" "Monitor setup complete."
