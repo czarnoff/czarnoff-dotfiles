@@ -1,5 +1,5 @@
 #!/bin/bash
-until  iwconfig wlp3s0 | grep ESSID | grep hangargate 
+until  iwconfig wlan0 | grep ESSID | grep hangargate 
 do
 #    echo no
     sleep 10
