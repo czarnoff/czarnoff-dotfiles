@@ -53,7 +53,7 @@ ZSH_THEME="czarnoff"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize python screen sudo tmux)
+plugins=(colorize python screen tmux sudo)
 
 echo "setup less"
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -117,9 +117,10 @@ alias python="python3"
 alias pylint="pylint3"
 alias xx='sudo pm-hibernate'
 alias k='taskell $HOME/vimwiki/taskell.md'
-alias lt='ls -tr'
+alias lt='ls -tr --time-style=iso'
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-fortune | lolcat
+#fortune | lolcat
+task
 bindkey -v
 bindkey -M vicmd '\es' sudo-command-line
 source ~/.config/fzf/key-bindings.zsh
