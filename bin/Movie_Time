@@ -3,7 +3,7 @@ if [ -n  "$1" ]
 then
     vid="$1"
 else
-    vid="`fzf`"
+    vid="`ls -t|fzf`"
 fi
 
 
