@@ -7,6 +7,6 @@ then
 fi
 
 
-cd "$HOME/Videos/new"
+cd "$HOME/Videos/yt"
 
 tsp yt-dlp --config-location "$HOME/.config/youtube-dl/config" $@
