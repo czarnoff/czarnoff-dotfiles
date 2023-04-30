@@ -42,6 +42,13 @@ else
     exit 1
 fi
 
+rustup upgrade
+
+echo "Upgrade firmware"
+fwupdmgr refresh
+fwupdmgr get-updates
+fwupdmgr upgrade
+
 $out "\nTrim"
 sudo fstrim -av
 
