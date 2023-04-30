@@ -8,5 +8,6 @@ fi
 
 
 cd "$HOME/Videos/yt"
+notify-send "tspy"  "Quing video $1"
 
-tsp yt-dlp --config-location "$HOME/.config/youtube-dl/config" $@
+tsp yt-dlp --embed-metadata --config-location "$HOME/.config/youtube-dl/config" $@
