@@ -10,4 +10,4 @@ fi
 cd "$HOME/Videos/yt"
 notify-send "tspy"  "Quing video $1"
 
-tsp yt-dlp --embed-metadata --config-location "$HOME/.config/youtube-dl/config" $@
+tsp yt-dlp --embed-metadata --config-location "$HOME/.config/youtube-dl/config" -f 'bestvideo[height<=1080]+bestaudio/best' $@
