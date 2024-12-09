@@ -34,15 +34,21 @@ then
     $out "upgrade"
     $arch_bin -Suy
     $out "clean"
-    $arch_bin -Sc
+    $arch_bin -Sc --noconfirm
     $out "deepclean"
-    $arch_bin -R `$arch_bin -Qdt | awk '{print $1}'`
+    $arch_bin --noconfirm -R `$arch_bin -Qdt | awk '{print $1}'`
+    sudo remove-orphaned-kernels 
 else
     $out "system not supported"
     exit 1
 fi
 
+fix_mouse.sh
+touchy
+
 rustup upgrade
+
+cargo-install-update install-update --all
 
 echo "Upgrade firmware"
 fwupdmgr refresh
