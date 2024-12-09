@@ -5,7 +5,10 @@ then
 else
     vid="`ls -t|fzf`"
 fi
-
+if [ -z "$vid" ]
+then
+  exit
+fi
 
 mpv "$vid" --volume=50 && rm -i "$vid"
 #mpv "$vid" --video-unscaled=downscale-big --volume=100 && rm -i "$vid"
